@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.News;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myapplication.Models.NewsHeadlines;
+import com.example.myapplication.News.News_Models.NewsHeadlines;
+import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {

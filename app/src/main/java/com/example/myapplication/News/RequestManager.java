@@ -1,9 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.News;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.myapplication.Models.NewsApiResponse;
+import com.example.myapplication.News.News_Models.NewsApiResponse;
+import com.example.myapplication.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

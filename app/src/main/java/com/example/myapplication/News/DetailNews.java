@@ -1,7 +1,9 @@
-package com.example.myapplication;
+package com.example.myapplication.News;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.example.myapplication.R;
 
 public class DetailNews extends Activity {
         @Override
