@@ -6,10 +6,128 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_main"
-        android:layout_margin="8dp"
+    <TableLayout
+        android:id="@+id/Table"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-   </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="178dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/border"
+        android:minHeight="250dp"
+        app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment_content_main"
+        app:layout_constraintStart_toEndOf="@+id/nav_host_fragment_content_main"
+
+        app:layout_constraintTop_toBottomOf="parent"
+        >
+
+        <!--app:layout_constraintTop_toBottomOf="@+id/currentDate">-->
+
+        <TableRow
+            android:layout_margin="10sp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:id="@+id/tabletext1col1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tabletext1col2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10sp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10sp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/col1"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/newstextview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:text="@string/newsheader"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment_content_main"
+        app:layout_constraintStart_toEndOf="@+id/nav_host_fragment_content_main"
+        app:layout_constraintTop_toBottomOf="@id/Table"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        app:layout_constraintTop_toBottomOf="@id/newstextview"
+        android:id="@+id/recycler_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
