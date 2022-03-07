@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.News;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
 
 public class CustomViewHolder extends RecyclerView.ViewHolder {
     TextView text_title, text_source;

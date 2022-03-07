@@ -1,6 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.News;
 
-import com.example.myapplication.Models.NewsHeadlines;
+import com.example.myapplication.News.News_Models.NewsHeadlines;
 
 import java.util.List;
 
