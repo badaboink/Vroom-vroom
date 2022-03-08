@@ -3,6 +3,12 @@ package com.example.myapplication;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.widget.TextClock;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,7 +22,10 @@ import com.example.myapplication.News.SelectListener;
 import com.example.myapplication.News.News_Models.NewsApiResponse;
 import com.example.myapplication.News.News_Models.NewsHeadlines;
 
+
+import java.text.DateFormat;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements SelectListener { //mainactivitynews
 
@@ -35,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         dialog.show();
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener, "business");
+
     }
 
     private final OnFetchDataListener<NewsApiResponse> listener=new OnFetchDataListener<NewsApiResponse>() {
@@ -49,6 +59,12 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
 
         }
     };
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
     private void showNews(List<NewsHeadlines> list) {
         recyclerView=findViewById(R.id.recycler_main);

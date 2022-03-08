@@ -12,19 +12,19 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent">
 
-
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/bar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimaryVariant"
+            android:theme="@style/Theme.MyApplication.AppBarOverlay"
+            android:textColor="#9C27B0"
             >
 
-
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Theme.MyApplication.PopupOverlay"
+                android:background="?attr/colorPrimaryVariant"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -32,14 +32,13 @@
             android:id="@+id/scrollView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bar"
+
             android:layout_gravity="center">
-            >
+
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <include layout="@layout/content_main" />

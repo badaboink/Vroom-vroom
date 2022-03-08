@@ -6,6 +6,21 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <TextClock
+        android:id="@+id/currentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="35sp"
+        android:gravity="right"
+        android:textStyle="bold"
+        >
+    </TextClock>
     <TableLayout
         android:id="@+id/Table"
         android:layout_width="match_parent"
@@ -17,12 +32,8 @@
         android:minHeight="250dp"
         app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment_content_main"
         app:layout_constraintStart_toEndOf="@+id/nav_host_fragment_content_main"
-
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currentDate"
         >
-
-        <!--app:layout_constraintTop_toBottomOf="@+id/currentDate">-->
-
         <TableRow
             android:layout_margin="10sp"
             android:background="@drawable/border">
@@ -114,8 +125,9 @@
         android:gravity="center_horizontal"
         android:padding="10sp"
         android:text="@string/newsheader"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment_content_main"
         app:layout_constraintStart_toEndOf="@+id/nav_host_fragment_content_main"
         app:layout_constraintTop_toBottomOf="@id/Table"
