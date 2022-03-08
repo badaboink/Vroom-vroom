@@ -46,7 +46,7 @@
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:padding="10sp"
-                android:text="@string/col1"
+                android:text=""
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
@@ -67,23 +67,25 @@
             android:background="@drawable/border">
 
             <TextView
+                android:id="@+id/tabletext2col1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:padding="10sp"
-                android:text="@string/col1"
+                android:text=""
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tabletext2col2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:gravity="center_horizontal"
                 android:padding="10sp"
-                android:text="@string/col1"
+                android:text="@string/col2"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
         </TableRow>
@@ -93,23 +95,25 @@
             android:background="@drawable/border">
 
             <TextView
+                android:id="@+id/tabletext3col1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:padding="10sp"
-                android:text="@string/col1"
+                android:text=""
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tabletext3col2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:gravity="center_horizontal"
                 android:padding="10sp"
-                android:text="@string/col1"
+                android:text="@string/col3"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
         </TableRow>

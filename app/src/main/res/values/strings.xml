@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vroom Vroom</string>
+    <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,9 +9,8 @@
     <string name="api_key_news">5045f3ca7ef0482f83e676fa38111184</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="col1">Blah</string>
+    <string name="col1">Electrum</string>
+    <string name="col2">Ignitis</string>
+    <string name="col3">Eso</string>
     <string name="newsheader">Naujienos</string>
 </resources>
