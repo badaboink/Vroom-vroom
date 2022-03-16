@@ -3,11 +3,18 @@ package com.example.myapplication;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +25,9 @@ import com.example.myapplication.News.RequestManager;
 import com.example.myapplication.News.SelectListener;
 import com.example.myapplication.News.News_Models.NewsApiResponse;
 import com.example.myapplication.News.News_Models.NewsHeadlines;
+import com.example.myapplication.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -27,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     CustomAdapter adapter;
     ProgressDialog dialog;
 
+
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,6 +51,13 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         dialog.show();
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener, "business");
+
+
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.toolbar);
 
         showPrices();
     }
@@ -81,5 +101,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     public void OnNewsClicked(NewsHeadlines headlines) {
         startActivity(new Intent(MainActivity.this, DetailActivity.class)
         .putExtra("data",headlines));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }
