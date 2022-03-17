@@ -6,7 +6,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_blue"
+    android:background="?attr/colorPrimary"
     >
 
 
@@ -15,13 +15,14 @@
 
         android:layout_width="match_parent"
         android:layout_height="192dp"
-        android:background="@color/vibrant_blue">
+        android:background="?attr/colorPrimaryVariant"
+        >
+
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@drawable/tesla"
-
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -30,10 +31,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/vibrant_blue"
-                app:subtitleTextColor="@color/white"
-                app:title="Vroom Vroom"
-                app:titleTextColor="#FFFFFF" />
+                app:title="Vroom Vroom" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -10,6 +10,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,6 +30,7 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SelectListener { //mainactivitynews
@@ -38,13 +40,20 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     ProgressDialog dialog;
 
 
-    private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        if (hour < 20 && hour > 8) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news articles...");
