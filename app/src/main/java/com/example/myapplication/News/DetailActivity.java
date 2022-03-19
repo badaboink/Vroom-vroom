@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 public class DetailActivity extends AppCompatActivity {
 
     NewsHeadlines headlines;
-    TextView txt_title, txt_author, txt_time, txt_detail, txt_content;
+    TextView txt_title, txt_author, txt_time, txt_detail, txt_content, txt_url;
     ImageView img_news;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         txt_detail=findViewById(R.id.text_detail_detail);
         txt_content=findViewById(R.id.text_detail_content);
         img_news=findViewById(R.id.img_detail_news);
+        txt_url=findViewById(R.id.txt_url);
 
         headlines= (NewsHeadlines) getIntent().getSerializableExtra("data");
 
@@ -35,6 +36,8 @@ public class DetailActivity extends AppCompatActivity {
         txt_detail.setText(headlines.getDescription());
         txt_content.setText(headlines.getContent());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
+        txt_url.setText(headlines.getUrl());//setMovementMethod(headlines.getUrl());// ////"Skaitykite daugiau:" +
+
 
 
     }

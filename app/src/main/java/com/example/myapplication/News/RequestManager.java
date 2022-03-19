@@ -6,6 +6,8 @@ import android.widget.Toast;
 import com.example.myapplication.News.News_Models.NewsApiResponse;
 import com.example.myapplication.R;
 
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +30,8 @@ public class RequestManager {
         Call<NewsApiResponse> call = callNewsApi.callHeadlines("lt",category,context.getString(R.string.api_key_news));
         try
         {
+
+
             call.enqueue(new Callback<NewsApiResponse>() {
                 @Override
                 public void onResponse(Call<NewsApiResponse> call, Response<NewsApiResponse> response) {

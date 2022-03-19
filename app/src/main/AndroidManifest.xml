@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".News.DetailActivity"
             android:exported="false" />
         <activity
@@ -22,7 +28,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

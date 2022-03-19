@@ -4,31 +4,24 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.News.CustomAdapter;
 import com.example.myapplication.News.DetailActivity;
+import com.example.myapplication.News.News_Models.NewsApiResponse;
+import com.example.myapplication.News.News_Models.NewsHeadlines;
 import com.example.myapplication.News.OnFetchDataListener;
 import com.example.myapplication.News.RequestManager;
 import com.example.myapplication.News.SelectListener;
-import com.example.myapplication.News.News_Models.NewsApiResponse;
-import com.example.myapplication.News.News_Models.NewsHeadlines;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.List;
@@ -58,10 +51,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news articles...");
         dialog.show();
+       // Date startDate = new Date();
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener, "business");
 
-
+        //prices
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -69,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         setSupportActionBar(binding.toolbar);
 
         showPrices();
+
+        ///menu
+        //NavigationView navigationView = findViewById(R.id.);
+
     }
 
     private final OnFetchDataListener<NewsApiResponse> listener=new OnFetchDataListener<NewsApiResponse>() {
@@ -116,5 +114,24 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.nav_profile)
+        {
+            Intent intent = new Intent(MainActivity.this,Profile.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id==R.id.nav_settings)
+        {
+            Intent intent = new Intent(MainActivity.this,Settings.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

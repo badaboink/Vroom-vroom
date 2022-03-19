@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="20sp"
+        android:padding="10dp"
+        android:text="Mano paskyra"
+        android:textColor="@color/black"
+        android:textSize="30sp">
+
+    </TextView>
+    <TextView
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prisijungimo vardas:"
+        android:textSize="15sp">
+
+    </TextView>
+    <TextView
+        android:id="@+id/profile_username"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="admin"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Susietas automobilis:"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/profile_car"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tesla S"
+        android:textSize="15sp">
+
+    </TextView>
+    <TextView
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Automobilio numeriai:"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/profile_car_nums"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EVROOM 156"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Susieta kortelė:"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/profile_card"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mastercard 8459 *****"
+        android:textSize="15sp">
+
+    </TextView>
+
+
+
+</RelativeLayout>
+
+
+
+
