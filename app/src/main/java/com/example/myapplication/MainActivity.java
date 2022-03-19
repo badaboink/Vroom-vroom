@@ -1,7 +1,13 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.Prices.SaveLoadData.savedHour;
+import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
+import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
+import static com.example.myapplication.Prices.SaveLoadData.savedPrice3;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,18 +26,20 @@ import com.example.myapplication.News.News_Models.NewsHeadlines;
 import com.example.myapplication.News.OnFetchDataListener;
 import com.example.myapplication.News.RequestManager;
 import com.example.myapplication.News.SelectListener;
+import com.example.myapplication.Prices.SaveLoadData;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
+import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements SelectListener { //mainactivitynews
 
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
-
 
     private ActivityMainBinding binding;
 
@@ -57,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
 
         //prices
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        /*binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        setSupportActionBar(binding.toolbar);*/
 
         showPrices();
 
@@ -90,18 +98,98 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         recyclerView.setAdapter(adapter);
     }
     private void showPrices(){
+
         TextView row1 = findViewById(R.id.tabletext1col1);
         TextView row2 = findViewById(R.id.tabletext2col1);
         TextView row3 = findViewById(R.id.tabletext3col1);
-        row1.setText(getPrice());
-        row2.setText(getPrice());
-        row3.setText(getPrice());
-
+        getPriceAccordingToTime(row1, savedPrice1);
+        getPriceAccordingToTime(row2, savedPrice2);
+        getPriceAccordingToTime(row3, savedPrice3);
+        if(getChangedHour("changeHour")){
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                OffsetTime offset = OffsetTime.now();
+                SaveLoadData.saveDate(Integer.toString(offset.getHour()), savedHour, this.getApplicationContext());
+                saveChangedHour("changeHour", false);
+            }
+        }
     }
-    private String getPrice(){
-        String price = Double.toString(Math.round(Math.random()*100.0) / 100.0);
-        price = "€" + price + "/kWh";
-        return price;
+    /*
+       kainos
+       0-11h    0.5 - 0.6 eur
+       12-16h   0.6 - 0.7 eur
+       17-18h   0.75 - 0.8 eur
+       19-23h   0.4 - 0.5 eur
+    */
+    private void getPriceAccordingToTime(TextView row, String file){
+        String price="";
+        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+            OffsetTime offset = OffsetTime.now();
+            if(offset.getHour() >= 17 && offset.getHour() <= 18){
+                if(lastUpdatedHour != 17 && lastUpdatedHour != 18){
+                    price = getPrice(0.75, 0.8);
+                    price = "€" + price + "/kWh";
+                    row.setText(price);
+                    SaveLoadData.savePrice(row, file, this.getApplicationContext());
+                    saveChangedHour("changeHour", true);
+                }
+                else{
+                    row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                }
+            }
+            else if (offset.getHour() >= 19 && offset.getHour() <= 23){
+                if(lastUpdatedHour < 19){
+                    price = getPrice(0.4, 0.5);
+                    price = "€" + price + "/kWh";
+                    row.setText(price);
+                    SaveLoadData.savePrice(row, file, this.getApplicationContext());
+                    saveChangedHour("changeHour", true);
+
+                }
+                else{
+                    row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                }
+            }
+            else if (offset.getHour() >= 0 && offset.getHour() <= 11){
+                if(lastUpdatedHour > 11){
+                    price = getPrice(0.5, 0.6);
+                    price = "€" + price + "/kWh";
+                    row.setText(price);
+                    SaveLoadData.savePrice(row, file, this.getApplicationContext());
+                    saveChangedHour("changeHour", true);
+                }
+                else {
+                    row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                }
+            }
+            else{
+                if(lastUpdatedHour < 12 || lastUpdatedHour > 16){
+                    price = getPrice(0.6, 0.7);
+                    price = "€" + price + "/kWh";
+                    row.setText(price);
+                    SaveLoadData.savePrice(row, file, this.getApplicationContext());
+                    saveChangedHour("changeHour", true);
+                }
+                else {
+                    row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                }
+            }
+        }
+    }
+    public String getPrice(double min, double max) {
+        return Double.toString(Math.round((Math.random() * (max - min) + min)*100.0)/100.0);
+    }
+    public void saveChangedHour(String key, boolean value)
+    {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(" SHARED_PREFERENCES_NAME ", android.content.Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, value);
+        editor.commit();
+    }
+    public boolean getChangedHour(String key)
+    {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(" SHARED_PREFERENCES_NAME ", android.content.Context.MODE_PRIVATE);
+        return preferences.getBoolean(key, false);
     }
 
     @Override
