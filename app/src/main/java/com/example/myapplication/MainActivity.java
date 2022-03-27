@@ -65,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
 
         //prices
 
-        /*binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);*/
+        setSupportActionBar(binding.toolbar);
 
         showPrices();
 
@@ -118,11 +118,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
        0-11h    0.5 - 0.6 eur
        12-16h   0.6 - 0.7 eur
        17-18h   0.75 - 0.8 eur
-       19-23h   0.4 - 0.5 eur
+       19-23h  0.4 - 0.5 eur
     */
     private void getPriceAccordingToTime(TextView row, String file){
         String price="";
-        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        int lastUpdatedHour = 19;//Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             OffsetTime offset = OffsetTime.now();
             if(offset.getHour() >= 17 && offset.getHour() <= 18){
