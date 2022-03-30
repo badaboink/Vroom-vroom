@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView username = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
         Button loginButton = (Button) findViewById(R.id.buttonLogin);
+        DAOPrice dao = new DAOPrice();
 
         //admin login
 
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
 
     }
 }

@@ -11,8 +11,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
-
+import com.example.myapplication.DAOPrice;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour < 20 && hour > 8) {
@@ -99,12 +99,15 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     }
     private void showPrices(){
 
-        TextView row1 = findViewById(R.id.tabletext1col1);
-        TextView row2 = findViewById(R.id.tabletext2col1);
-        TextView row3 = findViewById(R.id.tabletext3col1);
-        getPriceAccordingToTime(row1, savedPrice1);
-        getPriceAccordingToTime(row2, savedPrice2);
-        getPriceAccordingToTime(row3, savedPrice3);
+        DAOPrice dao = new DAOPrice();
+        final TextView row1 = findViewById(R.id.tabletext1col1);
+        final TextView row2 = findViewById(R.id.tabletext2col1);
+        final TextView row3 = findViewById(R.id.tabletext3col1);
+        final String price1, price2, price3;
+        price1=getPriceAccordingToTime(row1, savedPrice1);
+        price2=getPriceAccordingToTime(row2, savedPrice2);
+        price3=getPriceAccordingToTime(row3, savedPrice3);
+        Price prices = new Price(price1,price2,price3);
         if(getChangedHour("changeHour")){
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 OffsetTime offset = OffsetTime.now();
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
                 saveChangedHour("changeHour", false);
             }
         }
+        dao.add(prices);
     }
     /*
        kainos
@@ -120,9 +124,12 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
        17-18h   0.75 - 0.8 eur
        19-23h  0.4 - 0.5 eur
     */
-    private void getPriceAccordingToTime(TextView row, String file){
+    private String getPriceAccordingToTime(TextView row, String file){
+
         String price="";
-        int lastUpdatedHour = 19;//Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        /*TextView roww = findViewById(R.id.tabletext1col2);
+        roww.setText(Integer.toString(lastUpdatedHour));*/
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             OffsetTime offset = OffsetTime.now();
             if(offset.getHour() >= 17 && offset.getHour() <= 18){
@@ -135,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
                 }
                 else{
                     row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                    price=SaveLoadData.load(file,this.getApplicationContext());
                 }
             }
             else if (offset.getHour() >= 19 && offset.getHour() <= 23){
@@ -148,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
                 }
                 else{
                     row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                    price=SaveLoadData.load(file,this.getApplicationContext());
                 }
             }
             else if (offset.getHour() >= 0 && offset.getHour() <= 11){
@@ -160,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
                 }
                 else {
                     row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                    price=SaveLoadData.load(file,this.getApplicationContext());
                 }
             }
             else{
@@ -172,9 +182,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
                 }
                 else {
                     row.setText(SaveLoadData.load(file, this.getApplicationContext()));
+                    price=SaveLoadData.load(file,this.getApplicationContext());
                 }
             }
         }
+        return price;
     }
     public String getPrice(double min, double max) {
         return Double.toString(Math.round((Math.random() * (max - min) + min)*100.0)/100.0);
