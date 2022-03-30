@@ -8,39 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-import static com.example.myapplication.Prices.SaveLoadData.savedHour;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice3;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
-import com.example.myapplication.DAOPrice;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.myapplication.News.CustomAdapter;
-import com.example.myapplication.News.DetailActivity;
-import com.example.myapplication.News.News_Models.NewsApiResponse;
-import com.example.myapplication.News.News_Models.NewsHeadlines;
-import com.example.myapplication.News.OnFetchDataListener;
-import com.example.myapplication.News.RequestManager;
-import com.example.myapplication.News.SelectListener;
-import com.example.myapplication.Prices.SaveLoadData;
-import com.example.myapplication.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
 
 import com.example.myapplication.Prices.SaveLoadData;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -84,24 +58,5 @@ public class Admin extends AppCompatActivity {
             }
         });
     }
-    public static void savePrice(TextView row, String FILE_NAME, Context FILE) {
-        String text = row.getText().toString();
-        FileOutputStream fos = null;
-        try {
-            fos = FILE.openFileOutput(FILE_NAME, MODE_PRIVATE);
-            fos.write(text.getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+
 }
