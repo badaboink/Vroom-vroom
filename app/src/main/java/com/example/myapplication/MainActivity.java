@@ -128,8 +128,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
 
         String price="";
         int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
-        TextView roww = findViewById(R.id.tabletext1col2);
-        roww.setText(Integer.toString(lastUpdatedHour));
+        /*TextView roww = findViewById(R.id.tabletext1col2);
+        roww.setText(Integer.toString(lastUpdatedHour));*/
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             OffsetTime offset = OffsetTime.now();
             if(offset.getHour() >= 17 && offset.getHour() <= 18){
