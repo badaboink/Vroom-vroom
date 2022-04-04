@@ -33,7 +33,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.time.OffsetTime;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Date Test = Calendar.getInstance().getTime();
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour < 20 && hour > 8 && hour!=12 || hour == 0 ) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
