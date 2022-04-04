@@ -33,6 +33,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.time.OffsetTime;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,8 +50,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Date Test = Calendar.getInstance().getTime();
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        if (hour < 20 && hour > 8) {
+        if (hour < 20 && hour > 8 && hour!=12 || hour == 0 ) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -127,8 +129,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     private String getPriceAccordingToTime(TextView row, String file){
 
         String price="";
-        int lastUpdatedHour = 17;
-        //lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        //int lastUpdatedHour = 17;
+        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
         /*TextView roww = findViewById(R.id.tabletext1col2);
         roww.setText(Integer.toString(lastUpdatedHour));*/
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
