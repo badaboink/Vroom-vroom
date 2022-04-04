@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     private String getPriceAccordingToTime(TextView row, String file){
 
         String price="";
-        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
+        int lastUpdatedHour = 17;
+        //lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
         /*TextView roww = findViewById(R.id.tabletext1col2);
         roww.setText(Integer.toString(lastUpdatedHour));*/
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
@@ -215,15 +216,25 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    protected static boolean login = false;
+    protected static boolean isadmin = false;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id==R.id.nav_profile)
         {
-            Intent intent = new Intent(MainActivity.this,Profile.class);
-            startActivity(intent);
-            return true;
+            if(login == false)
+            {
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            else
+            {
+                Intent intent = new Intent(MainActivity.this,Profile.class);
+                startActivity(intent);
+                return true;
+            }
         }
         else if(id==R.id.nav_settings)
         {
@@ -232,6 +243,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
             return true;
         }
         return super.onOptionsItemSelected(item);
-
+    }
+    public static void changelogin()
+    {
+        login = true;
+    }
+    public static void adminloggedin()
+    {
+        isadmin = true;
+    }
+    public static boolean isitadmin()
+    {
+        return isadmin;
     }
 }
