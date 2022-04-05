@@ -9,14 +9,19 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import com.example.myapplication.DAOPrice;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,13 +41,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements SelectListener { //mainactivitynews
+public class MainActivity extends AppCompatActivity implements SelectListener, NavigationView.OnNavigationItemSelectedListener{ //mainactivitynews
 
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
 
-    private ActivityMainBinding binding;
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -63,18 +68,57 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener, "business");
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
         //prices
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
         showPrices();
 
-        ///menu
-        //NavigationView navigationView = findViewById(R.id.);
+    }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_profile:
+                if(!login)
+                {
+                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else
+                {
+                    Intent intent = new Intent(MainActivity.this,Profile.class);
+                    startActivity(intent);
+                    return true;
+                }
+            case R.id.nav_battery:
+                Intent intent = new Intent(MainActivity.this,Battery.class);
+                startActivity(intent);
+                return true;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START))
+        {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else
+            super.onBackPressed();
     }
 
     private final OnFetchDataListener<NewsApiResponse> listener=new OnFetchDataListener<NewsApiResponse>() {
@@ -220,29 +264,29 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     protected static boolean isadmin = false;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id==R.id.nav_profile)
+        switch(item.getItemId())
         {
-            if(login == false)
-            {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            case R.id.nav_profile:
+                if(!login)
+                {
+                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else
+                {
+                    Intent intent = new Intent(MainActivity.this,Profile.class);
+                    startActivity(intent);
+                    return true;
+                }
+            case R.id.nav_settings:
+                Intent intent = new Intent(MainActivity.this,Settings.class);
                 startActivity(intent);
                 return true;
-            }
-            else
-            {
-                Intent intent = new Intent(MainActivity.this,Profile.class);
-                startActivity(intent);
-                return true;
-            }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        else if(id==R.id.nav_settings)
-        {
-            Intent intent = new Intent(MainActivity.this,Settings.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+
     }
     public static void changelogin()
     {
@@ -251,6 +295,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener { 
     public static void adminloggedin()
     {
         isadmin = true;
+    }
+    public static boolean isloggedin()
+    {
+        return login;
     }
     public static boolean isitadmin()
     {

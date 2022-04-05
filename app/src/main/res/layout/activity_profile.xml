@@ -27,16 +27,17 @@
         android:textSize="15sp">
 
     </TextView>
+
     <TextView
         android:id="@+id/profile_username"
-        android:layout_marginTop="120dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="120dp"
         android:text="admin"
-        android:textSize="15sp">
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
 
@@ -118,8 +119,9 @@
         android:id="@+id/accessprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kainos keitimas"
         android:layout_centerInParent="true"
+        android:text="Kainos keitimas"
+        android:layout_alignParentBottom="true"
         />
 
 

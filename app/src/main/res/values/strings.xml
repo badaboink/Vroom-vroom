@@ -13,6 +13,7 @@
     <string name="col2">Ignitis</string>
     <string name="col3">Eso</string>
     <string name="newsheader">Naujienos</string>
+
     <string name="title_activity_menu">MenuActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -21,6 +22,7 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_battery">Battery</string>
+    <string name="menu_logout">Log out</string>
 </resources>
