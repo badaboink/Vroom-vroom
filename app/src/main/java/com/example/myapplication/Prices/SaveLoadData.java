@@ -59,6 +59,7 @@ public class SaveLoadData {
         }
     }
     public static String load(String file, Context FILE) {
+        //return "";
         FileInputStream fis = null;
         try {
             fis = FILE.openFileInput(file);
@@ -70,8 +71,6 @@ public class SaveLoadData {
                 sb.append(text).append("");
             }
             return sb.toString();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

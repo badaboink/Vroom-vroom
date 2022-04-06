@@ -5,6 +5,7 @@ import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice3;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.myapplication.DAOPrice;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener, N
                 saveChangedHour("changeHour", false);
             }
         }
-        dao.add(prices);
+        //dao.add(prices);
     }
     /*
        kainos
@@ -169,15 +171,23 @@ public class MainActivity extends AppCompatActivity implements SelectListener, N
        17-18h   0.75 - 0.8 eur
        19-23h  0.4 - 0.5 eur
     */
+    @SuppressLint("SetTextI18n")
     private String getPriceAccordingToTime(TextView row, String file){
 
         String price="";
-        //int lastUpdatedHour = 17;
-        int lastUpdatedHour = Integer.parseInt(Objects.requireNonNull(SaveLoadData.load(savedHour, this.getApplicationContext())));
-        /*TextView roww = findViewById(R.id.tabletext1col2);
-        roww.setText(Integer.toString(lastUpdatedHour));*/
+        int lastUpdatedHour = 0;
+        String lastUpdatedHourString = SaveLoadData.load(savedHour, this.getApplicationContext());
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
             OffsetTime offset = OffsetTime.now();
+            if(lastUpdatedHourString == null){
+                lastUpdatedHour = offset.getHour() + 12;
+                if(lastUpdatedHour >= 24){
+                    lastUpdatedHour = lastUpdatedHour - 24;
+                }
+            }
+            else{
+                lastUpdatedHour = Integer.parseInt(lastUpdatedHourString);
+            }
             if(offset.getHour() >= 17 && offset.getHour() <= 18){
                 if(lastUpdatedHour != 17 && lastUpdatedHour != 18){
                     price = getPrice(0.75, 0.8);
