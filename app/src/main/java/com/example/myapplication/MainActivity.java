@@ -55,10 +55,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener, N
         setContentView(R.layout.activity_main);
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        if (hour < 20 && hour > 8 && hour!=12 || hour == 0 ) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        if (hour > 20 || hour == 12 || hour < 8) {
+            if(hour!=0)
+            {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
         }
 
         dialog = new ProgressDialog(this);
