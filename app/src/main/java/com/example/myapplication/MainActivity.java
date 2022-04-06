@@ -5,6 +5,7 @@ import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice3;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +13,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.myapplication.DAOPrice;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -41,13 +46,15 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements SelectListener, NavigationView.OnNavigationItemSelectedListener{ //mainactivitynews
+public class MainActivity extends AppCompatActivity implements  SelectListener, NavigationView.OnNavigationItemSelectedListener{ //mainactivitynews
 
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
 
     DrawerLayout drawer;
+
+    Button chargeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -85,6 +92,37 @@ public class MainActivity extends AppCompatActivity implements SelectListener, N
         //prices
         showPrices();
 
+        ///button
+        chargeButton = (Button)findViewById(R.id.butt_charge);
+        chargeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNewChargingDialog();
+            }
+        });
+    }
+
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog2;
+    EditText percentage;
+    Button pay,cancel;
+
+    public void createNewChargingDialog(){
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View chargingView = getLayoutInflater().inflate(R.layout.paypopup, null);
+        pay = (Button)chargingView.findViewById(R.id.pay_butt);
+        dialogBuilder.setView(chargingView);
+        dialog2= dialogBuilder.create();
+        dialog2.show();
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               Toast.makeText(getApplicationContext(),"Mokėjimas sėkmingas", Toast.LENGTH_SHORT).show();
+                dialog2.dismiss();
+            }
+        });
+        //jei dar cancel - tas pats tik dialog.dismiss viduj
     }
 
     @Override
@@ -305,4 +343,5 @@ public class MainActivity extends AppCompatActivity implements SelectListener, N
     {
         return isadmin;
     }
+
 }

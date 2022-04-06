@@ -122,6 +122,16 @@
 
     </TableLayout>
 
+    <Button
+        android:id="@+id/butt_charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160sp"
+        android:text="Įkrauti"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/purple_500"
+        ></Button>
+
     <TextView
         android:id="@+id/newstextview"
         android:layout_width="match_parent"
