@@ -5,25 +5,40 @@ import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice3;
 
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.DAOPrice;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -45,9 +60,12 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements  SelectListener, NavigationView.OnNavigationItemSelectedListener{ //mainactivitynews
 
@@ -58,11 +76,18 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     DrawerLayout drawer;
 
     Button chargeButton;
+    static Double money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        money= 250.16; //jei nerastu failo - NERANDA FAILO
+        //money = readFromFile("money.txt");
+
+        TextView moneyView = findViewById(R.id.tabletextmoney);
+        moneyView.setText(money.toString() +" €");
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour > 20 || hour == 12 || hour < 8) {
@@ -100,33 +125,22 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         chargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createNewChargingDialog();
+                Intent intent = new Intent(MainActivity.this, PaySelect.class);
+                startActivity(intent);
+                //OnChargeClicked();
             }
         });
     }
 
-    AlertDialog.Builder dialogBuilder;
-    AlertDialog dialog2;
-    EditText percentage;
-    Button pay,cancel;
-
-    public void createNewChargingDialog(){
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View chargingView = getLayoutInflater().inflate(R.layout.paypopup, null);
-        pay = (Button)chargingView.findViewById(R.id.pay_butt);
-        dialogBuilder.setView(chargingView);
-        dialog2= dialogBuilder.create();
-        dialog2.show();
-        pay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-               Toast.makeText(getApplicationContext(),"Mokėjimas sėkmingas", Toast.LENGTH_SHORT).show();
-                dialog2.dismiss();
-            }
-        });
-        //jei dar cancel - tas pats tik dialog.dismiss viduj
+    public static void SetMoney(Double m)
+    {
+        money=m;
     }
+    public static Double GetMoney()
+    {
+        return money;
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -353,6 +367,26 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     public static boolean isitadmin()
     {
         return isadmin;
+    }
+
+    public Double readFromFile(String filename)
+    {
+        FileInputStream fis =null;
+        String moneyfile="200.00";
+        try{
+            fis = openFileInput(filename);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bf = new BufferedReader(isr);
+            String text;
+            while((text=bf.readLine())!=null){ //paskutini grazina
+                moneyfile=text;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Double.parseDouble(moneyfile);
     }
 
 }

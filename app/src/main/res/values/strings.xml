@@ -25,4 +25,12 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_battery">Battery</string>
     <string name="menu_logout">Log out</string>
+
+    <string-array name="companies">
+        <item>Elektrum</item>
+        <item>Ignitis</item>
+        <item>Eso</item>
+    </string-array>
+    <string name="title_activity_paypopupp">PaypopuppActivity</string>
+    <string name="title_activity_pay_select">PaySelect</string>
 </resources>

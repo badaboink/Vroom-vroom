@@ -7,21 +7,55 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
-    <TextClock
-        android:id="@+id/currentDate"
+    <TableLayout
+        android:id="@+id/Tableclock"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="35sp"
-        android:gravity="end"
-        android:textStyle="bold"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:minHeight="250dp"
         >
-    </TextClock>
+
+    <TableRow
+        >
+
+        <TextView
+            android:id="@+id/tabletextmoney"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:gravity="start"
+            android:padding="10sp"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextClock
+            android:id="@+id/currentDate"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:padding="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextClock>
+    </TableRow>
+    </TableLayout>
+
+
+
+
 
     <TableLayout
         android:id="@+id/Table"
