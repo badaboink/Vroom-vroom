@@ -8,10 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="midtone">#CEEDF4</color>
+    <color name="midtonedark">#25251B</color>
     <color name="main_blue">#93d4e3</color>
-    <color name="dark_blue">#03045E</color>
+    <color name="dark">#121212</color>
     <color name="vibrant_blue">#00b3d7</color>
     <color name="shadow_vblue">#8D00B3D7</color>
     <color name="lightest_blue">#caf1f8</color>
     <color name="yellow">#F1D009</color>
+    <color name="shadowyellow">#C8AD08</color>
 </resources>

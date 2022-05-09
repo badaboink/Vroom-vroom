@@ -7,7 +7,7 @@
             <corners android:topLeftRadius="10dp" android:topRightRadius="0.1dp"
                 android:bottomLeftRadius="10dp" android:bottomRightRadius="0.1dp"/>
             <gradient
-                android:startColor="?attr/colorPrimaryVariant"
+                android:startColor="?attr/colorPrimary"
                 android:endColor="?attr/colorPrimaryDark"
                 android:type="linear"
                 android:angle="270"

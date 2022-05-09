@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.service.autofill.Transformation;
@@ -29,7 +31,6 @@ public class Battery extends AppCompatActivity {
         int battery = random.nextInt(100);
         ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(battery);
-
         // if button is pressed => charge
         Button text = (Button) findViewById(R.id.button);
         text.setOnClickListener(new View.OnClickListener() {
