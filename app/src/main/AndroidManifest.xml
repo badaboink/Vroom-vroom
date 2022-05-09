@@ -23,6 +23,8 @@
         <activity
             android:name=".History.MoneyTransfers"
             android:exported="false" />
+        <activity android:name=".Logout"
+            android:exported="false" />
         <activity
             android:name=".Success"
             android:exported="false" />

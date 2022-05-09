@@ -51,9 +51,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
-
     DrawerLayout drawer;
-
     Button chargeButton;
     static Double money;
 
@@ -77,6 +75,18 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
         else money = 250.16;
         setContentView(R.layout.activity_main);
+
+        /*if(!login)
+        {
+            changeLogoutVisibilityGone();
+        }
+        else
+        {
+            changeLogoutVisibilityVisible();
+        }*/
+        money= 250.16; //jei nerastu failo - NERANDA FAILO
+        //money = readFromFile("money.txt");
+
         TextView moneyView = findViewById(R.id.tabletextmoney);
         moneyView.setText(money.toString() +" €");
 
@@ -344,6 +354,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
 
     }
+
     public static void changelogin()
     {
         login = true;
