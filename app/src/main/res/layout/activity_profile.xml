@@ -115,6 +115,21 @@
 
     </TextView>
 
+    <TextView
+        android:id="@+id/moneyHistoryProfile"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="320dp"
+        android:text="Mokėjimų istorija"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold">
+
+    </TextView>
+
     <Button
         android:id="@+id/accessprice"
         android:layout_width="wrap_content"

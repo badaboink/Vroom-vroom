@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:paddingTop="7dp"
-                android:text="Pakrauti:"
+                android:text="Pakrauti (%) :"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold">
@@ -59,12 +59,14 @@
             </TextView>
 
             <TextView
+                android:id="@+id/percentChange"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="0sp"
                 android:paddingTop="7dp"
-                android:text="75%"
+                android:text="75"
+
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold">

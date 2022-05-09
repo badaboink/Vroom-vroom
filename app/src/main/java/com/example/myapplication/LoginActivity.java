@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText etEmail, etPassword;
-    private String email, password;
+    private EditText etEmail, etPassword, etMoney;
+    private String email, password, money;
     private String URL = "http://10.0.2.2/login/login.php";
 
     @Override
@@ -35,11 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         email = password = "";
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        //etMoney= findViewById(R.id.tabletextmoney);
     }
 
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
+        //money = etMoney.getText().toString().trim();
         if(!email.equals("") && !password.equals("")){
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                     Map<String, String> data = new HashMap<>();
                     data.put("email", email);
                     data.put("password", password);
+                    //data.put("money", money);
                     return data;
                 }
             };

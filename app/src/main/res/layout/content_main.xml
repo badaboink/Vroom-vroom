@@ -20,7 +20,7 @@
     <TableRow
         >
 
-        <TextView
+        <EditText
             android:id="@+id/tabletextmoney"
             android:layout_width="200dp"
             android:layout_height="match_parent"

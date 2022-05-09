@@ -26,12 +26,17 @@
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_detail.xml" value="0.176" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_money_history_view_holder.xml" value="0.264" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_money_transfers.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_pay_select.xml" value="0.176" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_profile.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_settings.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/activity_success.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/companies_selct_adapted.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/content_main.xml" value="0.264" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/content_main2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/fragment_charging.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/fragment_first.xml" value="0.209375" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/fragment_first2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/fragment_gallery.xml" value="0.21927083333333333" />
@@ -45,6 +50,7 @@
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/nav_header_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/paypopup.xml" value="0.264" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/layout/paypopupp.xml" value="0.1" />
+        <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/menu/activity_main_drawer.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/menu/drawer_menu.xml" value="0.2" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/menu/manu_main.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Namai/Vroom-vroom/app/src/main/res/menu/menu_main.xml" value="0.2" />

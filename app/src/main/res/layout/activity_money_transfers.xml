@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".History.MoneyTransfers"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:background="@drawable/border"
+        >
+
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="80sp">
+        <TextView
+            android:layout_width="205sp"
+            android:layout_height="80sp"
+            android:id="@+id/spentMoney"
+            android:textColor="#FF0000"
+            android:textSize="40sp"
+            android:text="-200.05 €"
+            android:textAlignment="center"
+            android:background="@android:color/black">
+        </TextView>
+        <TextView
+            android:layout_width="205sp"
+            android:layout_height="80sp"
+            android:id="@+id/gainedMoney"
+            android:textSize="40sp"
+            android:text="+2212.17 €"
+            android:textAlignment="center"
+            android:textColor="#00FF00">
+        </TextView>
+          </TableRow>
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/moneyHistory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10sp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="88dp" />
+
+
+</LinearLayout>
