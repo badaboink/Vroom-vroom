@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    /*public void Connect() {
+    public void Connect() {
         ConnectMySql task = new ConnectMySql();
         task.execute();
 
@@ -72,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
                 emailFromDb = e.getMessage();
             }
             try{
-                //Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/register_from_android", "root", "");
-                Connection con= DriverManager.getConnection("jdbc:mysql://"+serverurl+db_nameurl,userNameurl,passwordurl);
+                Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/register_from_android", "root", "");
+                //Connection con= DriverManager.getConnection("jdbc:mysql://"+serverurl+db_nameurl,userNameurl,passwordurl);
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("SELECT * FROM users");
 
@@ -93,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
             }
             return "";
         }
-    }*/
+
+    }
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
@@ -105,12 +106,12 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     Log.d("res", response);
                     if (response.equals("success")) {
-                        //Connect();
+                        Connect();
                         if(email.equals("admingmail.com") && password.equals("admin"))
                         {
                             MainActivity.adminloggedin();
                         }
-                        emailFromDb = email;
+                        //emailFromDb = email;
                         MainActivity.changelogin();
                         Intent intent = new Intent(LoginActivity.this, Profile.class);
                         startActivity(intent);

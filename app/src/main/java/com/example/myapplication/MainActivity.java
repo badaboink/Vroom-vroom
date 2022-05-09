@@ -82,14 +82,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*if(!login)
-        {
-            changeLogoutVisibilityGone();
-        }
-        else
-        {
-            changeLogoutVisibilityVisible();
-        }*/
+
         money= 250.16; //jei nerastu failo - NERANDA FAILO
         //money = readFromFile("money.txt");
 
@@ -129,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
+        chargeButton.setVisibility(View.VISIBLE);
         chargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -250,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
             if(offset.getHour() >= 17 && offset.getHour() <= 18){
                 if(lastUpdatedHour != 17 && lastUpdatedHour != 18){
-                    price = getPrice(0.75, 0.8);
+                    price = getPrice(0.75, 0.81);
                     price = "€" + price + "/kWh";
                     row.setText(price);
                     SaveLoadData.savePrice(row, file, this.getApplicationContext());
@@ -263,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
             else if (offset.getHour() >= 19 && offset.getHour() <= 23){
                 if(lastUpdatedHour < 19){
-                    price = getPrice(0.4, 0.5);
+                    price = getPrice(0.41, 0.51);
                     price = "€" + price + "/kWh";
                     row.setText(price);
                     SaveLoadData.savePrice(row, file, this.getApplicationContext());
@@ -277,7 +271,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
             else if (offset.getHour() >= 0 && offset.getHour() <= 11){
                 if(lastUpdatedHour > 11){
-                    price = getPrice(0.5, 0.6);
+                    price = getPrice(0.51, 0.61);
                     price = "€" + price + "/kWh";
                     row.setText(price);
                     SaveLoadData.savePrice(row, file, this.getApplicationContext());
@@ -290,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
             else{
                 if(lastUpdatedHour < 12 || lastUpdatedHour > 16){
-                    price = getPrice(0.6, 0.7);
+                    price = getPrice(0.61, 0.71);
                     price = "€" + price + "/kWh";
                     row.setText(price);
                     SaveLoadData.savePrice(row, file, this.getApplicationContext());
