@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Prices.SaveLoadData;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.text.DecimalFormat;
@@ -24,11 +26,13 @@ public class PaySelect extends AppCompatActivity {
     ListView lv;
     String[] companies = {"Elektrum", "Ignitis", "Eso"};
     double price=0;
-    Double totalSum;
+    static Double totalSum=0.00;
     Button pay, percentChange;
     TextView totalPrice;
     Double mmoeyd;
-    TextView percentage;
+    String saved1,saved2, saved3 ="";
+    EditText percentage;
+    String subPrice="";
     private String URL = "http://10.0.2.2/login/register.php";
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -38,6 +42,7 @@ public class PaySelect extends AppCompatActivity {
         setContentView(R.layout.activity_pay_select);
         totalPrice = findViewById(R.id.totalPrice);
         //totalSum=0.00;
+
         totalPrice.setText(totalSum.toString() + " €");
 
         lv=findViewById(R.id.listView);
@@ -52,20 +57,27 @@ public class PaySelect extends AppCompatActivity {
                 //String item = listAdapter.getItem(i);
                 int index =i;
                 if(index==0) {
-                    price = Double.parseDouble("0.66");//(savedPrice1); NEVEIKIA?Kornelijos paklaust
+                    saved1 = SaveLoadData.load(SaveLoadData.savedPrice1,getApplicationContext());
+                    subPrice = saved1.substring(1,5);
+
                 }
                 else if(i==1){
-                    price = Double.parseDouble("0.88");//(savedPrice2);
+                   saved2 = SaveLoadData.load(SaveLoadData.savedPrice2,getApplicationContext());
+                    subPrice = saved2.substring(1,5);
+
                 }
                 else {
-                    price = Double.parseDouble("0.99");//(savedPrice3);
-                }
-                //percentage=findViewById(R.id.percentChange);
-                //double percent = Double.parseDouble(String.valueOf(percentChange)); //is Egles gaut reikes
-                Double sum = 75*price;
-                String totalSum = df.format(sum); //cia nzn kaip reikes dar konvertuot
+                    saved3 = SaveLoadData.load(SaveLoadData.savedPrice3,getApplicationContext());
+                    subPrice = saved3.substring(1,5);
 
+                }
+                price = Double.parseDouble(subPrice);//(savedPrice2);
+                percentage=findViewById(R.id.percentChange);
+                Double percent = Double.parseDouble(percentage.getText().toString()); //is Egles gaut reikes
+                Double sum = percent*price;
+                String totalSum = df.format(sum); //cia nzn kaip reikes dar konvertuot
                 totalPrice.setText(totalSum + " €");
+                //totalPrice.setText(totalSum + " €");
                 //Toast.makeText(getApplicationContext(),(int)price, Toast.LENGTH_SHORT).show();
             }
 

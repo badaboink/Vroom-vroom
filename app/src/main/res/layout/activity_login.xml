@@ -7,7 +7,8 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#e8f4f8">
+    android:background="@drawable/bg_color">
+
 
     <EditText
         android:id="@+id/etEmail"
@@ -25,13 +26,14 @@
         android:inputType="textPassword"
         android:hint="Password"/>
 
-    <Button
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+
+    android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:background="#44a6c6"
+        android:background="?attr/colorPrimary"
         android:onClick="login"
-        android:textColor="@android:color/white"/>
+        android:textColor="?attr/colorOnPrimary"/>
 
     <TextView
         android:layout_width="match_parent"
