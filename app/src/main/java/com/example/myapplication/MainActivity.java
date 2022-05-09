@@ -72,17 +72,24 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
-
     DrawerLayout drawer;
-
     Button chargeButton;
     static Double money;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*if(!login)
+        {
+            changeLogoutVisibilityGone();
+        }
+        else
+        {
+            changeLogoutVisibilityVisible();
+        }*/
         money= 250.16; //jei nerastu failo - NERANDA FAILO
         //money = readFromFile("money.txt");
 
@@ -352,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
 
     }
+
     public static void changelogin()
     {
         login = true;

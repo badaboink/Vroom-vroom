@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.MainActivity.isadmin;
+import static com.example.myapplication.MainActivity.login;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
 
@@ -15,8 +19,11 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //username.setText
         Button changeprice = (Button) findViewById(R.id.accessprice);
-
+        Button logout = (Button) findViewById(R.id.btn_logout);
+        TextView username = findViewById(R.id.profile_username);
+        username.setText(LoginActivity.emailFromDb);
         changeprice.setVisibility(View.GONE);
         if(MainActivity.isitadmin())
         {
@@ -29,5 +36,17 @@ public class Profile extends AppCompatActivity {
                 }
             });
         }
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isadmin = false;
+                login = false;
+                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(startIntent);
+            }
+        });
+    }
+    public static void SetName(String name){
+
     }
 }

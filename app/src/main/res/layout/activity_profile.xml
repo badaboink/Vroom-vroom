@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="120dp"
-        android:text="admin"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold">
@@ -55,14 +54,14 @@
 
     <TextView
         android:id="@+id/profile_car"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="170dp"
         android:text="Tesla S"
-        android:textSize="15sp">
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
     <TextView
@@ -79,14 +78,14 @@
 
     <TextView
         android:id="@+id/profile_car_nums"
-        android:layout_marginTop="220dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="220dp"
         android:text="EVROOM 156"
-        android:textSize="15sp">
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
 
@@ -119,10 +118,24 @@
         android:id="@+id/accessprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Kainos keitimas"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        />
+        android:layout_centerVertical="true"
+        android:layout_marginStart="121dp"
+        android:layout_marginBottom="249dp"
+        android:text="Kainos keitimas"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="30dp"
+        android:text="Atsijungti"
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>
