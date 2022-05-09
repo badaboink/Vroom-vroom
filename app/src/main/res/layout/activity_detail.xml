@@ -30,7 +30,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_detail_title"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         android:textStyle="bold"
                         android:textSize="26sp">
 
@@ -48,7 +48,7 @@
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
                          android:id="@+id/text_detail_author"
-                         android:textColor="@color/purple_500"
+                         android:textColor="?attr/colorPrimary"
                          android:layout_marginTop="6dp"
                          android:textSize="16sp">
 
@@ -57,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_detail_time"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         android:layout_marginTop="6dp"
                         android:textSize="16sp">
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_detail_detail"
                 android:textSize="22sp"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:layout_marginTop="8dp">
 
             </TextView>
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_detail_content"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:layout_marginTop="8dp">
 
             </TextView>
@@ -91,7 +91,7 @@
                 android:id="@+id/txt_url"
                 android:autoLink="web"
                 android:textSize="20sp"
-                android:textColor="@color/lightest_blue"
+                android:textColor="?attr/colorPrimary"
                 android:layout_marginTop="8dp">
 
             </TextView>

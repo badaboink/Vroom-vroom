@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white">
+    android:background="?attr/colorOnPrimary">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_marginTop="20sp"
         android:padding="10dp"
         android:text="Mano paskyra"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="30sp">
 
     </TextView>
@@ -20,7 +20,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prisijungimo vardas:"
@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="120dp"
-        android:textColor="@color/black"
+        android:text="admin"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
         android:textStyle="bold">
 
@@ -44,7 +45,7 @@
         android:layout_marginTop="170dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Susietas automobilis:"
@@ -54,21 +55,21 @@
 
     <TextView
         android:id="@+id/profile_car"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="170dp"
         android:text="Tesla S"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold">
+        android:textSize="15sp">
 
     </TextView>
     <TextView
         android:layout_marginTop="220dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Automobilio numeriai:"
@@ -78,14 +79,14 @@
 
     <TextView
         android:id="@+id/profile_car_nums"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="170dp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="220dp"
         android:text="EVROOM 156"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold">
+        android:textSize="15sp">
 
     </TextView>
 
@@ -93,7 +94,7 @@
         android:layout_marginTop="270dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Susieta kortelė:"
@@ -106,7 +107,7 @@
         android:layout_marginTop="270dp"
         android:layout_marginLeft="170dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mastercard 8459 *****"
@@ -118,24 +119,10 @@
         android:id="@+id/accessprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="121dp"
-        android:layout_marginBottom="249dp"
+        android:layout_centerInParent="true"
         android:text="Kainos keitimas"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="30dp"
-        android:text="Atsijungti"
-        android:textColor="@color/white" />
+        android:layout_alignParentBottom="true"
+        />
 
 
 </RelativeLayout>

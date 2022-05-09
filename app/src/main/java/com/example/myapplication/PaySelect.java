@@ -104,7 +104,7 @@ public class PaySelect extends AppCompatActivity {
                 //writeToFile("money.txt",Left.toString());
 
                 //iseit i main
-                Intent intent = new Intent(PaySelect.this, MainActivity.class);
+                Intent intent = new Intent(PaySelect.this, Battery.class);
                 startActivity(intent);
 
                 //krovimo pradzia vaizdavimo
