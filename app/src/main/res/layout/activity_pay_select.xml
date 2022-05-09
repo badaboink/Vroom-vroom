@@ -51,34 +51,29 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:paddingTop="7dp"
-                android:text="Pakrauti:"
+                android:text="Pakrauti (%) :"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold">
 
             </TextView>
 
-            <TextView
-                android:layout_width="70dp"
+            <EditText
+                android:id="@+id/percentChange"
+                android:layout_width="155dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="0sp"
                 android:paddingTop="7dp"
-                android:text="75%"
+
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold">
 
-            </TextView>
+            </EditText>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="?attr/colorPrimary"
-                android:text="Keisti"
-                android:textColor="?attr/colorOnPrimary">
 
-            </Button>
+
         </TableRow>
 
     </TableLayout>

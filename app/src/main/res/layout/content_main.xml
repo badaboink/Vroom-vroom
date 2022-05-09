@@ -17,6 +17,8 @@
         android:minHeight="100dp"
 
         >
+
+
     <TableRow>
         <TextView
             android:background="@drawable/roundblockleft"

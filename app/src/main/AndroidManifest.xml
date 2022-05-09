@@ -18,7 +18,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="n">
         <activity
-            android:name=".Logout"
+            android:name=".History.MoneyHistoryViewHolder"
+            android:exported="false" />
+        <activity
+            android:name=".History.MoneyTransfers"
+            android:exported="false" />
+        <activity android:name=".Logout"
             android:exported="false" />
         <activity
             android:name=".Success"

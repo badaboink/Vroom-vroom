@@ -52,6 +52,8 @@ public class Battery extends AppCompatActivity {
                     }
                 });
                 animator.start();
+                Intent intent = new Intent(Battery.this, MainActivity.class);
+                startActivity(intent);
             }
 
         });
