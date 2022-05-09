@@ -34,7 +34,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etMoney;
-    private String email, password, money;
+    private static String email, password, money;
     public static final String serverurl="localhost/";
     public static final String db_nameurl="register_from_android";
     public static final String userNameurl="root";
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         password = etPassword.getText().toString().trim();
         //money = etMoney.getText().toString().trim();
 
-        if(!email.equals("") && !password.equals("")){
+        //if(!email.equals("") && !password.equals("")){
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
@@ -111,11 +111,11 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("res", response);
                     if (response.equals("success")) {
                         Connect();
-                        if(email.equals("admingmail.com") && password.equals("admin"))
+                        if(email.equals("admin@gmail.com") && password.equals("admin"))
                         {
                             MainActivity.adminloggedin();
                         }
-                        //emailFromDb = email;
+                        emailFromDb = email;
                         MainActivity.changelogin();
                         Intent intent = new Intent(LoginActivity.this, Profile.class);
                         startActivity(intent);
@@ -141,9 +141,9 @@ public class LoginActivity extends AppCompatActivity {
             };
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
-        }else{
-            Toast.makeText(this, "Fields can not be empty!", Toast.LENGTH_SHORT).show();
-        }
+        //}else{
+            //Toast.makeText(this, "Fields can not be empty!", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     public void register(View view) {
