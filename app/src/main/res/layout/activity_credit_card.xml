@@ -22,7 +22,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="10dp"
-            android:background="@color/dark_blue"
+            android:background="?attr/colorPrimaryDark"
             android:text="Pridėti"
             android:textColor="@android:color/white">
 

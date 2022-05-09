@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20sp"
         android:text="Pasirinkite tiekėją"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="22dp"
         android:layout_marginTop="30sp"
         android:layout_marginLeft="100sp"
@@ -52,7 +52,7 @@
                 android:layout_gravity="center"
                 android:paddingTop="7dp"
                 android:text="Pakrauti:"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold">
 
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="0sp"
                 android:paddingTop="7dp"
                 android:text="75%"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20dp"
                 android:textStyle="bold">
 
@@ -74,9 +74,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="?attr/colorPrimaryVariant"
                 android:text="Keisti"
-                android:textColor="@color/white">
+                android:textColor="?attr/colorOnPrimary">
 
             </Button>
         </TableRow>
@@ -104,7 +104,7 @@
                 android:layout_marginLeft="70sp"
                 android:layout_marginBottom="250sp"
                 android:text="Suma:"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20sp"
                 android:textStyle="bold">
 
@@ -115,7 +115,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="30sp"
                 android:layout_marginBottom="20sp"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:id="@+id/totalPrice">
@@ -134,10 +134,8 @@
         android:layout_marginBottom="110sp"
         android:background="@drawable/roundedbutton"
         android:text="MOKĖTI"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="15sp"
-
-
         >
 
     </Button>

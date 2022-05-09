@@ -64,7 +64,8 @@
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/drawable/shadow.xml" value="0.131" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/drawable/tableborder.xml" value="0.1545" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_admin.xml" value="0.33" />
-        <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_detail.xml" value="0.1405775075987842" />
+        <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_credit_card.xml" value="0.1707193515704154" />
+        <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_log.xml" value="0.1707193515704154" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -77,10 +78,12 @@
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/app_navigationwindow.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/cm_test.xml" value="0.13601823708206687" />
+        <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/companies_selct_adapted.xml" value="0.33" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/content_main.xml" value="0.33" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/fragment_charging.xml" value="0.25" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/fragment_first.xml" value="0.22554347826086957" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/fragment_gallery.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/fragment_second.xml" value="0.1707193515704154" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/headline_list_items.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/main_fragment.xml" value="0.21" />
         <entry key="..\:/Users/eglej/Vroom-vroom/app/src/main/res/layout/main_navigation.xml" value="0.358695652173913" />
