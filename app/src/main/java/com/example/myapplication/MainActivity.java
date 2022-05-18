@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             changeLogoutVisibilityVisible();
         }*/
         //money= 250.16; //jei nerastu failo - NERANDA FAILO
+
+        money= 250.16; //jei nerastu failo - NERANDA FAILO
         //money = readFromFile("money.txt");
 
         TextView moneyView = findViewById(R.id.tabletextmoney);
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
+        chargeButton.setVisibility(View.VISIBLE);
         chargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

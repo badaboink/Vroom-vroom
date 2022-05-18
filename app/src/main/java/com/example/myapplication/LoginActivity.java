@@ -34,7 +34,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etMoney;
-    private String email, password, money;
+    private static String email, password, money;
     public static final String serverurl="localhost/";
     public static final String db_nameurl="register_from_android";
     public static final String userNameurl="root";
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    /*public void Connect() {
+    public void Connect() {
         ConnectMySql task = new ConnectMySql();
         task.execute();
 
@@ -75,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                 emailFromDb = e.getMessage();
             }
             try{
-                //Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/register_from_android", "root", "");
-                Connection con= DriverManager.getConnection("jdbc:mysql://"+serverurl+db_nameurl,userNameurl,passwordurl);
+                Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/register_from_android", "root", "");
+                //Connection con= DriverManager.getConnection("jdbc:mysql://"+serverurl+db_nameurl,userNameurl,passwordurl);
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("SELECT * FROM users");
 
@@ -96,21 +96,22 @@ public class LoginActivity extends AppCompatActivity {
             }
             return "";
         }
-    }*/
+
+    }
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
         //money = etMoney.getText().toString().trim();
 
-        if(!email.equals("") && !password.equals("")){
+        //if(!email.equals("") && !password.equals("")){
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     Log.d("res", response);
                     if (response.equals("success")) {
-                        //Connect();
-                        if(email.equals("admingmail.com") && password.equals("admin"))
+                        Connect();
+                        if(email.equals("admin@gmail.com") && password.equals("admin"))
                         {
                             MainActivity.adminloggedin();
                         }
@@ -140,9 +141,9 @@ public class LoginActivity extends AppCompatActivity {
             };
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
-        }else{
-            Toast.makeText(this, "Fields can not be empty!", Toast.LENGTH_SHORT).show();
-        }
+        //}else{
+            //Toast.makeText(this, "Fields can not be empty!", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     public void register(View view) {
