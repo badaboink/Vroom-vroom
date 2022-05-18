@@ -38,12 +38,13 @@ public class PaySelect extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        totalSum=0.00;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_select);
         totalPrice = findViewById(R.id.totalPrice);
         //totalSum=0.00;
 
-        totalPrice.setText(totalSum.toString() + " €");
+        totalPrice.setText(df.format(totalSum) + " €");
 
         lv=findViewById(R.id.listView);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -73,10 +74,17 @@ public class PaySelect extends AppCompatActivity {
                 }
                 price = Double.parseDouble(subPrice);//(savedPrice2);
                 percentage=findViewById(R.id.percentChange);
-                Double percent = Double.parseDouble(percentage.getText().toString()); //is Egles gaut reikes
-                Double sum = percent*price;
-                String totalSum = df.format(sum); //cia nzn kaip reikes dar konvertuot
-                totalPrice.setText(totalSum + " €");
+                Double percent =0.00;
+                try{
+                     percent = Double.parseDouble(percentage.getText().toString()); //is Egles gaut reikes
+                }
+                catch (NumberFormatException e){
+                    percent=0.00;
+
+                }
+                totalSum = percent*price;
+                String stringsum = df.format(totalSum); //cia nzn kaip reikes dar konvertuot
+                totalPrice.setText(stringsum + " €");
                 //totalPrice.setText(totalSum + " €");
                 //Toast.makeText(getApplicationContext(),(int)price, Toast.LENGTH_SHORT).show();
             }
@@ -117,7 +125,7 @@ public class PaySelect extends AppCompatActivity {
 
                 Intent i = new Intent();
                 i.setClassName("com.example.myapplication", "com.example.myapplication.MainActivity");
-                i.putExtra("money", totalSum);
+                i.putExtra("money", Left.toString());
                 startActivity(i);
 
                 //krovimo pradzia vaizdavimo

@@ -42,6 +42,7 @@ import com.example.myapplication.News.SelectListener;
 import com.example.myapplication.Prices.SaveLoadData;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.DecimalFormat;
 import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     DrawerLayout drawer;
     Button chargeButton;
     static Double money;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     Double getTotalSum()
     {
@@ -75,14 +77,16 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
         else money = 250.16;*/
 
+        Intent intent = getIntent();
+        String moneyB = intent.getStringExtra("money");
+        if (moneyB!=null){
+            //String myString = bundle.containsKey("money") ? bundle.getString("money") : "250.16";
+             //String moneys = bundle.getString("money");
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle!=null){
-            String myString = bundle.containsKey("money") ? bundle.getString("money") : "250.16";
-             String moneys = bundle.getString("money");
+            //if(moneys!=null)
+            money = Double.parseDouble(moneyB);
+            //format
 
-            if(moneys!=null)
-            money = Double.parseDouble(moneys);
 
         }
         else money = 256.16;
@@ -102,11 +106,12 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }*/
         //money= 250.16; //jei nerastu failo - NERANDA FAILO
 
-        money= 250.16; //jei nerastu failo - NERANDA FAILO
+        //money= 250.16; //jei nerastu failo - NERANDA FAILO
         //money = readFromFile("money.txt");
 
         TextView moneyView = findViewById(R.id.tabletextmoney);
-        moneyView.setText(money.toString() +" €");
+        String moneystr = df.format((money));
+        moneyView.setText(moneystr +" €");
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour > 20 || hour == 12 || hour < 8) {
