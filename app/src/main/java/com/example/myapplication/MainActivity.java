@@ -69,11 +69,27 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null) {
+        /*if (savedInstanceState != null) {
             Double totalSum= getTotalSum();
             if(totalSum!=0.00) money = 250.16-totalSum;
         }
-        else money = 250.16;
+        else money = 250.16;*/
+
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null){
+            String myString = bundle.containsKey("money") ? bundle.getString("money") : "250.16";
+             String moneys = bundle.getString("money");
+
+            if(moneys!=null)
+            money = Double.parseDouble(moneys);
+
+        }
+        else money = 256.16;
+
+
+        //money = Double.parseDouble(myString);
+
         setContentView(R.layout.activity_main);
 
         /*if(!login)
@@ -84,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         {
             changeLogoutVisibilityVisible();
         }*/
-        money= 250.16; //jei nerastu failo - NERANDA FAILO
+        //money= 250.16; //jei nerastu failo - NERANDA FAILO
         //money = readFromFile("money.txt");
 
         TextView moneyView = findViewById(R.id.tabletextmoney);

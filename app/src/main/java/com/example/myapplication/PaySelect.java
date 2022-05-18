@@ -112,8 +112,13 @@ public class PaySelect extends AppCompatActivity {
                 //writeToFile("money.txt",Left.toString());
 
                 //iseit i main
-                Intent intent = new Intent(PaySelect.this, MainActivity.class);
-                startActivity(intent);
+               /* Intent intent = new Intent(PaySelect.this, MainActivity.class);
+                startActivity(intent);*/
+
+                Intent i = new Intent();
+                i.setClassName("com.example.myapplication", "com.example.myapplication.MainActivity");
+                i.putExtra("money", totalSum);
+                startActivity(i);
 
                 //krovimo pradzia vaizdavimo
                 //veliau uzdet tikrinima ar yra pinigu tiek
