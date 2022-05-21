@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String db_nameurl="register_from_android";
     public static final String userNameurl="root";
     public static final String passwordurl="";
+    public static boolean loginclicked = false;
 
     public static String emailFromDb, passwordFromDb, nameFromDb;
 
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void Connect() {
+    /*public void Connect() {
         ConnectMySql task = new ConnectMySql();
         task.execute();
 
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             return "";
         }
 
-    }
+    }*/
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
@@ -110,18 +111,19 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     Log.d("res", response);
                     if (response.equals("success")) {
-                        Connect();
+                        //Connect();
                         if(email.equals("admin@gmail.com") && password.equals("admin"))
                         {
                             MainActivity.adminloggedin();
                         }
                         emailFromDb = email;
                         MainActivity.changelogin();
-                        Intent intent = new Intent(LoginActivity.this, Profile.class);
+                        loginclicked = true;
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else if (response.equals("failure")) {
-                        Toast.makeText(LoginActivity.this, "Invalid Login Id/Password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Neteisingas el. paštas/slaptažodis", Toast.LENGTH_SHORT).show();
                     }
                 }
             }, new Response.ErrorListener() {

@@ -13,7 +13,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="272dp"
         android:ems="10"
-        android:hint="Electrum Price"
+        android:hint="Electrum kaina"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="192dp"
         android:ems="10"
-        android:hint="Ignitis Price"
+        android:hint="Ignitis kaina"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="352dp"
         android:ems="10"
-        android:hint="Eso Price"
+        android:hint="Eso kaina"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
         android:layout_marginTop="188dp"
-        android:text="SAVE"
+        android:text="OK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +58,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="292dp"
         android:layout_marginTop="268dp"
-        android:text="Button"
+        android:text="OK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +68,7 @@
         android:layout_height="47dp"
         android:layout_marginStart="292dp"
         android:layout_marginTop="352dp"
-        android:text="Button"
+        android:text="OK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginTop="468dp"
-        android:text="Button"
+        android:text="Patvirtinti"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

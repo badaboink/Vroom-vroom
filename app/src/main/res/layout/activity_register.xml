@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Vardas"
         android:inputType="textPersonName" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="El. paštas"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Slaptažodis"
         android:inputType="textPassword" />
 
     <EditText
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Re-enter Password"
+        android:hint="Pakartokite slaptažodį"
         android:inputType="textPassword" />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:background="#44a6c6"
         android:onClick="save"
-        android:text="Register"
+        android:text="Registruotis"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="Already Registered?\nLogin here."
+        android:text="Turite paskyrą?\nPrisijunkite."
         android:textAlignment="center"
         android:onClick="login"/>
 </LinearLayout>

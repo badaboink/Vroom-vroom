@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Email"/>
+        android:hint="El. paštas"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -24,13 +24,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="Slaptažodis"/>
 
     <androidx.appcompat.widget.AppCompatButton
 
     android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Prisijungti"
         android:background="?attr/colorPrimary"
         android:onClick="login"
         android:textColor="?attr/colorOnPrimary"/>
@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Don't have an Account?\nRegister here."
+        android:text="Neturite paskyros?\nUžsiregistruokite."
         android:onClick="register"
         android:layout_marginTop="10dp"
         android:textAlignment="center"

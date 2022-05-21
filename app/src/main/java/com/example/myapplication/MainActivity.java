@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.LoginActivity.loginclicked;
 import static com.example.myapplication.Prices.SaveLoadData.savedHour;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
@@ -96,14 +97,6 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         setContentView(R.layout.activity_main);
 
-        /*if(!login)
-        {
-            changeLogoutVisibilityGone();
-        }
-        else
-        {
-            changeLogoutVisibilityVisible();
-        }*/
         //money= 250.16; //jei nerastu failo - NERANDA FAILO
 
         //money= 250.16; //jei nerastu failo - NERANDA FAILO
@@ -111,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         TextView moneyView = findViewById(R.id.tabletextmoney);
         String moneystr = df.format((money));
-        moneyView.setText(moneystr +" €");
+
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour > 20 || hour == 12 || hour < 8) {
@@ -146,7 +139,17 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
-        chargeButton.setVisibility(View.VISIBLE);
+        if(!isloggedin()){
+            chargeButton.setVisibility(View.GONE);
+
+            moneyView.setText("");
+        }
+
+        if(isloggedin())
+        {
+            moneyView.setText(moneystr +" €");
+            chargeButton.setVisibility(View.VISIBLE);
+        }
         chargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,13 +175,13 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_profile:
-                /*if(!login)
+                if(!login)
                 {
                     Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                     startActivity(intent);
                     return true;
                 }
-                else*/
+                else
                 {
                     Intent intent = new Intent(MainActivity.this,Profile.class);
                     startActivity(intent);

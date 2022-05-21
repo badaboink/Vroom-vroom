@@ -34,7 +34,7 @@ public class Admin extends AppCompatActivity {
             public void onClick(View view) {
 
                 String price1;
-                if(text1.getText().toString().matches("[0-9].[0-9]+")){
+                if(text1.getText().toString().matches("[0-9].[0-9][0-9]")){
                     price1 = text1.getText().toString();
                     price1 = "€" + price1 + "/kWh";
                     text1.setText(price1);
@@ -48,7 +48,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String price2;
-                if(text2.getText().toString().matches("[0-9].[0-9]+")){
+                if(text2.getText().toString().matches("[0-9].[0-9][0-9]")){
                     price2 = text2.getText().toString();
                     price2 = "€" + price2 + "/kWh";
                     text2.setText(price2);
@@ -61,7 +61,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String price3;
-                if(text3.getText().toString().matches("[0-9].[0-9]+")){
+                if(text3.getText().toString().matches("[0-9].[0-9][0-9]")){
                     price3 = text3.getText().toString();
                     price3 = "€" + price3 + "/kWh";
                     text3.setText(price3);

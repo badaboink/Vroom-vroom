@@ -49,17 +49,17 @@ public class Register extends AppCompatActivity {
         password = etPassword.getText().toString().trim();
         reenterPassword = etReenterPassword.getText().toString().trim();
         if(!password.equals(reenterPassword)){
-            Toast.makeText(this, "Password Mismatch", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Slaptažodžiai nesutampa", Toast.LENGTH_SHORT).show();
         }
         else if(!name.equals("") && !email.equals("") && !password.equals("")){
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     if (response.equals("success")) {
-                        tvStatus.setText("Successfully registered.");
+                        tvStatus.setText("Sėkmingai užsiregistruota.");
                         btnRegister.setClickable(false);
                     } else if (response.equals("failure")) {
-                        tvStatus.setText("Something went wrong!");                    }
+                        tvStatus.setText("Klaida!");                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
