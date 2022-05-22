@@ -35,7 +35,7 @@ public class Profile extends AppCompatActivity {
         //username.setText
         Button changeprice = (Button) findViewById(R.id.accessprice);
         Button logout = (Button) findViewById(R.id.btn_logout);
-        TextView username = findViewById(R.id.profile_username);
+        TextView username = findViewById(R.id.profile_email);
         username.setText(LoginActivity.emailFromDb);
         changeprice.setVisibility(View.GONE);
         if(MainActivity.isitadmin())

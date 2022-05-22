@@ -34,7 +34,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etMoney;
-    private static String email, password, money;
+    private static String email, password, name, money;
     public static final String serverurl="localhost/";
     public static final String db_nameurl="register_from_android";
     public static final String userNameurl="root";
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        email = password = "";
+        email = password = name = "";
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
 
@@ -118,8 +118,13 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         emailFromDb = email;
                         MainActivity.changelogin();
+                        Bundle bundle = new Bundle();
+                        String returnEmail = "";
+                        returnEmail = email;
+                        bundle.putString("email", returnEmail);
                         loginclicked = true;
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
                     } else if (response.equals("failure")) {

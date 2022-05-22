@@ -27,16 +27,22 @@ public class Battery extends AppCompatActivity {
         setContentView(R.layout.fragment_charging);
 
         // set battery percent to random
-        Random random = new Random();
-        int battery = random.nextInt(100);
+        //Random random = new Random();
+        //int battery = random.nextInt(100);
+        int chargeFrom = 0;
+        int battery = 0;
+        Bundle bundle = getIntent().getExtras();
+        battery = bundle.getInt("percentage");
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        progressBar.setProgress(battery);
+        progressBar.setProgress(chargeFrom);
         // if button is pressed => charge
         Button text = (Button) findViewById(R.id.button);
+        int finalBattery = battery;
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValueAnimator animator = ValueAnimator.ofInt(battery, progressBar.getMax());
+                boolean finished = false;
+                ValueAnimator animator = ValueAnimator.ofInt(chargeFrom, finalBattery);
                 animator.setDuration(3000);
                 animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
@@ -48,12 +54,13 @@ public class Battery extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
+                        Intent intent = new Intent(Battery.this, MainActivity.class);
+                        startActivity(intent);
                         // start your activity here
                     }
                 });
                 animator.start();
-                Intent intent = new Intent(Battery.this, MainActivity.class);
-                startActivity(intent);
+
             }
 
         });
