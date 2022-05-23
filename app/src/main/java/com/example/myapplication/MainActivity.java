@@ -43,6 +43,8 @@ import com.example.myapplication.News.SelectListener;
 import com.example.myapplication.Prices.SaveLoadData;
 import com.google.android.material.navigation.NavigationView;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 import java.time.OffsetTime;
 import java.util.Calendar;
@@ -105,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         TextView moneyView = findViewById(R.id.tabletextmoney);
         String moneystr = df.format((money));
 
-
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if (hour > 20 || hour == 12 || hour < 8) {
             if(hour!=0)
@@ -126,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView drawerEmail = headerView.findViewById(R.id.drawer_email);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -141,13 +144,17 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         chargeButton = (Button)findViewById(R.id.butt_charge);
         if(!isloggedin()){
             chargeButton.setVisibility(View.GONE);
-
+            drawerEmail.setText("Prisijunkit");
             moneyView.setText("");
         }
 
         if(isloggedin())
         {
             moneyView.setText(moneystr +" €");
+            String email = "";
+            Bundle bundle = getIntent().getExtras();
+            email = bundle.getString("email");
+            drawerEmail.setText(email);
             chargeButton.setVisibility(View.VISIBLE);
         }
         chargeButton.setOnClickListener(new View.OnClickListener() {
@@ -188,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                     return true;
                 }
             case R.id.nav_battery:
-                Intent intent = new Intent(MainActivity.this,Battery.class);
+                Intent intent = new Intent(MainActivity.this,BatteryCheck.class);
                 startActivity(intent);
                 return true;
         }
@@ -381,7 +388,6 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
 
     }
-
     public static void changelogin()
     {
         login = true;

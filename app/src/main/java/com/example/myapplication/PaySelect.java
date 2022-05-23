@@ -126,7 +126,16 @@ public class PaySelect extends AppCompatActivity {
                 Intent i = new Intent();
                 i.setClassName("com.example.myapplication", "com.example.myapplication.MainActivity");
                 i.putExtra("money", Left.toString());
-                startActivity(i);
+                //startActivity(i);
+
+                Intent ibattery = new Intent(PaySelect.this, Battery.class);
+                Bundle bundle = new Bundle();
+                int percentageDouble = Integer.parseInt(percentage.getText().toString());
+                bundle.putInt("percentage", percentageDouble);
+                ibattery.putExtras(bundle);
+                startActivity(ibattery);
+
+
 
                 //krovimo pradzia vaizdavimo
                 //veliau uzdet tikrinima ar yra pinigu tiek

@@ -30,12 +30,12 @@
     </TextView>
 
     <TextView
-        android:id="@+id/profile_username"
+        android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="120dp"
-        android:text="admin"
+        android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
         android:textStyle="bold">
