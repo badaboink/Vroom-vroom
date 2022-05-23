@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".PaySelect">
+    tools:context=".PaySelect"
+    android:background="@drawable/bg_color">
 
     <TextView
         android:id="@+id/textView2"
