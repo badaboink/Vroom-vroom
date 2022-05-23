@@ -25,6 +25,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.Register;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -41,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String passwordurl="";
 
 
-    public static String emailFromDb, passwordFromDb, nameFromDb;
+    public static String emailFromDb, passwordFromDb, nameFromDb, autoFromDB, autoNrFromDb, cardFromDb, batteryFromDb;
 
     private String URL = "http://10.0.2.2/login/login.php";
 
@@ -110,20 +114,37 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     Log.d("res", response);
-                    if (response.equals("success")) {
+                    if (!response.equals("failure")) {
+                        try
+                        {
+                            JSONObject jsonobject = new JSONObject(response);
+                            JSONArray jsonarray = jsonobject.getJSONArray("users");
+                            JSONObject data = jsonarray.getJSONObject(0);
+
+                            nameFromDb = data.getString("name");
+                            emailFromDb = data.getString("email");
+                            autoFromDB = data.getString("connected_auto");
+                            autoNrFromDb = data.getString("auto_nr");
+                            cardFromDb = data.getString("card_info");
+                            batteryFromDb = data.getString("battery");
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                         //Connect();
                         if(email.equals("admin@gmail.com") && password.equals("admin"))
                         {
                             MainActivity.adminloggedin();
                         }
-                        emailFromDb = email;
+                        //emailFromDb = email;
                         MainActivity.changelogin();
                         Bundle bundle = new Bundle();
                         String returnEmail = "";
                         returnEmail = email;
                         bundle.putString("email", returnEmail);
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
                     } else if (response.equals("failure")) {

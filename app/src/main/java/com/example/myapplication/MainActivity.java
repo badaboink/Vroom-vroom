@@ -17,11 +17,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     DrawerLayout drawer;
     Button chargeButton;
     static Double money;
+    static int Battery = 0;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     Double getTotalSum()
@@ -128,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
+        TextView drawerName = headerView.findViewById(R.id.drawer_name);
         TextView drawerEmail = headerView.findViewById(R.id.drawer_email);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -144,17 +148,16 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         chargeButton = (Button)findViewById(R.id.butt_charge);
         if(!isloggedin()){
             chargeButton.setVisibility(View.GONE);
-            drawerEmail.setText("Prisijunkit");
+            drawerEmail.setText("Prisijunkite");
             moneyView.setText("");
         }
 
         if(isloggedin())
         {
             moneyView.setText(moneystr +" €");
-            String email = "";
-            Bundle bundle = getIntent().getExtras();
-            email = bundle.getString("email");
-            drawerEmail.setText(email);
+            drawerEmail.setText(LoginActivity.emailFromDb);
+            drawerName.setText(LoginActivity.nameFromDb);
+            Battery = Integer.parseInt(LoginActivity.batteryFromDb);
             chargeButton.setVisibility(View.VISIBLE);
         }
         chargeButton.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +168,13 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                 //OnChargeClicked();
             }
         });
+
+        if(finishedcharge())
+        {
+            Bundle bundle = getIntent().getExtras();
+            Battery = bundle.getInt("battery");
+            charge = false;
+        }
       }
 
 
@@ -195,9 +205,17 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                     return true;
                 }
             case R.id.nav_battery:
-                Intent intent = new Intent(MainActivity.this,BatteryCheck.class);
-                startActivity(intent);
-                return true;
+                if(isloggedin())
+                {
+                    Intent intent = new Intent(MainActivity.this,BatteryCheck.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("battery", Battery);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    return true;
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Prisijunkite", Toast.LENGTH_SHORT).show();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -362,6 +380,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     }
     protected static boolean login = false;
     protected static boolean isadmin = false;
+    protected static boolean charge = false;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
@@ -396,6 +415,10 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     {
         isadmin = true;
     }
+    public static void finishedcharging()
+    {
+        charge = true;
+    }
     public static boolean isloggedin()
     {
         return login;
@@ -404,6 +427,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     {
         return isadmin;
     }
+    public static boolean finishedcharge() { return charge;}
 
     public Double readFromFile(String filename)
     {

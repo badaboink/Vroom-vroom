@@ -29,20 +29,23 @@ public class Battery extends AppCompatActivity {
         // set battery percent to random
         //Random random = new Random();
         //int battery = random.nextInt(100);
+        //int chargeFrom = Integer.parseInt(LoginActivity.batteryFromDb);
         int chargeFrom = 0;
         int battery = 0;
         Bundle bundle = getIntent().getExtras();
         battery = bundle.getInt("percentage");
+        chargeFrom = bundle.getInt("currentBattery");
         ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(chargeFrom);
         // if button is pressed => charge
         Button text = (Button) findViewById(R.id.button);
         int finalBattery = battery;
+        int finalChargeFrom = chargeFrom;
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean finished = false;
-                ValueAnimator animator = ValueAnimator.ofInt(chargeFrom, finalBattery);
+                ValueAnimator animator = ValueAnimator.ofInt(finalChargeFrom, finalChargeFrom+finalBattery);
                 animator.setDuration(3000);
                 animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
@@ -55,8 +58,15 @@ public class Battery extends AppCompatActivity {
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         Intent intent = new Intent(Battery.this, MainActivity.class);
+                        MainActivity.finishedcharging();
+                        MainActivity.isloggedin();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("battery", finalChargeFrom +finalBattery);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         // start your activity here
+
+                        //TODO: pakeicia db baterija
                     }
                 });
                 animator.start();
