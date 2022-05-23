@@ -122,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject data = jsonarray.getJSONObject(0);
 
                             nameFromDb = data.getString("name");
+                            passwordFromDb = data.getString("password");
                             emailFromDb = data.getString("email");
                             autoFromDB = data.getString("connected_auto");
                             autoNrFromDb = data.getString("auto_nr");
