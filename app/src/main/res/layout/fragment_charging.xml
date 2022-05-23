@@ -20,5 +20,23 @@
         android:layout_centerInParent="true"
         android:text="Krauti" />
 
+    <TextView
+        android:id="@+id/percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/progressBar"
+        android:layout_alignBottom="@id/progressBar"
+        android:layout_marginBottom="-20dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/percentageold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/progressBar"
+        android:layout_alignBottom="@id/progressBar"
+        android:layout_marginBottom="-40dp"
+        android:text="" />
+
 
 </RelativeLayout>

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String passwordurl="";
 
 
-    public static String emailFromDb, passwordFromDb, nameFromDb, autoFromDB, autoNrFromDb, cardFromDb, batteryFromDb;
+    public static String emailFromDb, passwordFromDb, nameFromDb, autoFromDB, autoNrFromDb, cardFromDb, batteryFromDb, moneyFromDb;
 
     private String URL = "http://10.0.2.2/login/login.php";
 
@@ -60,49 +60,6 @@ public class LoginActivity extends AppCompatActivity {
         //etMoney= findViewById(R.id.tabletextmoney);
 
     }
-
-    /*public void Connect() {
-        ConnectMySql task = new ConnectMySql();
-        task.execute();
-
-    }
-    protected static class ConnectMySql extends AsyncTask<String, Void, String>{
-        @Override
-        protected void onPreExecute() {super.onPreExecute();}
-
-        @Override
-        protected String doInBackground(String... params){
-            try{
-
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-            }catch(Exception e){
-                e.printStackTrace();
-                emailFromDb = e.getMessage();
-            }
-            try{
-                Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/register_from_android", "root", "");
-                //Connection con= DriverManager.getConnection("jdbc:mysql://"+serverurl+db_nameurl,userNameurl,passwordurl);
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM users");
-
-                while(rs.next()){
-                    emailFromDb = rs.getString("email");
-                    if(email.equals(emailFromDb)){
-                        nameFromDb = rs.getString("name");
-                        passwordFromDb = rs.getString("password");
-                    }
-                }
-                st.close();
-                con.close();
-            }catch(Exception e){
-                e.printStackTrace();
-                //emailFromDb = "error";
-                emailFromDb = e.getMessage();
-            }
-            return "";
-        }
-
-    }*/
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
@@ -128,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                             autoNrFromDb = data.getString("auto_nr");
                             cardFromDb = data.getString("card_info");
                             batteryFromDb = data.getString("battery");
+                            moneyFromDb = data.getString("money");
                         }
                         catch (JSONException e) {
                             e.printStackTrace();

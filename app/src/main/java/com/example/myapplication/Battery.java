@@ -69,6 +69,10 @@ public class Battery extends AppCompatActivity {
         batteryfordb = newbattery+"";
         email = LoginActivity.emailFromDb;
         password = LoginActivity.passwordFromDb;
+        TextView perc = findViewById(R.id.percentage);
+        perc.setText(String.format("Kraunama iki: %d %%", newbattery));
+        TextView percold = findViewById(R.id.percentageold);
+        perc.setText(String.format("Kraunama nuo: %d %%", chargeFrom));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
