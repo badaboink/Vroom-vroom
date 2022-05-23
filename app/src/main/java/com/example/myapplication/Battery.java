@@ -37,7 +37,7 @@ import java.util.Random;
 
 public class Battery extends AppCompatActivity {
     private String URL = "http://10.0.2.2/login/battery.php";
-    private String email = LoginActivity.emailFromDb, password, batteryfordb;
+    private String email, password, batteryfordb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class Battery extends AppCompatActivity {
         battery = bundle.getInt("percentage");
         chargeFrom = bundle.getInt("currentBattery");
         Double Left = bundle.getDouble("money");
-
+        password = bundle.getString("password");
 
 
         ProgressBar progressBar = findViewById(R.id.progressBar);

@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     Button chargeButton;
     static Double money;
     static int Battery = 0;
+    static String car = "";
+    static String carnr = "";
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
 
@@ -156,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         if(finishedcharge())
         {
-
             Battery = bundle.getInt("battery");
             charge = false;
 
@@ -187,6 +188,15 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                 else
                 {
                     Intent intent = new Intent(MainActivity.this,Profile.class);
+                    Bundle bundle = new Bundle();
+                    if(car == "" || carnr == "")
+                    {
+                        car = LoginActivity.autoFromDB;
+                        carnr = LoginActivity.autoNrFromDb;
+                    }
+                    bundle.putString("car", car);
+                    bundle.putString("carnumbers", carnr);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     return true;
                 }
@@ -381,6 +391,15 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                 else
                 {
                     Intent intent = new Intent(MainActivity.this,Profile.class);
+                    Bundle bundle = new Bundle();
+                    if(car == "" || carnr == "")
+                    {
+                        car = LoginActivity.autoFromDB;
+                        carnr = LoginActivity.autoNrFromDb;
+                    }
+                    bundle.putString("car", car);
+                    bundle.putString("carnumbers", carnr);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     return true;
                 }

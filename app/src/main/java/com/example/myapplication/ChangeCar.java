@@ -53,10 +53,8 @@ public class ChangeCar extends AppCompatActivity {
                 Log.d("res", response);
                 if (response.equals("true")) {
                     Intent intent = new Intent(ChangeCar.this, MainActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("car", car);
-                    bundle.putString("carnumbers", numbers);
-                    intent.putExtras(bundle);
+                    MainActivity.car = car;
+                    MainActivity.carnr = numbers;
                     startActivity(intent);
                     //Toast.makeText(Battery.this, "Teisinga", Toast.LENGTH_SHORT).show();
 

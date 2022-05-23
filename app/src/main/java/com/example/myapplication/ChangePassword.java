@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -60,10 +61,13 @@ public class ChangePassword extends AppCompatActivity {
             public void onResponse(String response) {
                 Log.d("res", response);
                 if (response.equals("true")) {
-                    Toast.makeText(ChangePassword.this, "Teisinga", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ChangePassword.this, MainActivity.class);
+                    MainActivity.login = false;
+                    startActivity(intent);
+                    //Toast.makeText(ChangePassword.this, "Teisinga", Toast.LENGTH_SHORT).show();
 
                 } else if (response.equals("failure")) {
-                    Toast.makeText(ChangePassword.this, "Neteisinga", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ChangePassword.this, "Neteisinga", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
