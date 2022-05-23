@@ -16,6 +16,7 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         TextView text = (TextView) findViewById(R.id.addCard);
+        TextView text2 = (TextView) findViewById(R.id.priceSettings);
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,6 +25,13 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        });
+        text2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, MainActivity2.class);
+                startActivity(intent);
+            }
         });
     }
 }

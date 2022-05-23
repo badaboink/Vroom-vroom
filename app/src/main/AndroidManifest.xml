@@ -7,7 +7,7 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,14 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true"
         tools:targetApi="n">
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
         <activity
             android:name=".History.MoneyHistoryViewHolder"
             android:exported="false" />
         <activity
             android:name=".History.MoneyTransfers"
             android:exported="false" />
-        <activity android:name=".Logout"
+        <activity
+            android:name=".Logout"
             android:exported="false" />
         <activity
             android:name=".Success"

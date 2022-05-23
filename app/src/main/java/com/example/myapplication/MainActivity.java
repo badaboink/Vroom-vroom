@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.LoginActivity.loginclicked;
+
 import static com.example.myapplication.Prices.SaveLoadData.savedHour;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;

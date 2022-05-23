@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String db_nameurl="register_from_android";
     public static final String userNameurl="root";
     public static final String passwordurl="";
-    public static boolean loginclicked = false;
+
 
     public static String emailFromDb, passwordFromDb, nameFromDb;
 
@@ -118,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         emailFromDb = email;
                         MainActivity.changelogin();
-                        loginclicked = true;
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
