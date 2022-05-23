@@ -64,15 +64,6 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     static int Battery = 0;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
-    Double getTotalSum()
-    {
-        Double totalSum= 0.00;
-        totalSum=PaySelect.totalSum;
-        if (totalSum !=0.00) money=250.16-totalSum;
-        else money = 250.16;
-        return totalSum;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -95,15 +86,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
         else money = 256.16;
 
-
-        //money = Double.parseDouble(myString);
-
         setContentView(R.layout.activity_main);
 
-        //money= 250.16; //jei nerastu failo - NERANDA FAILO
-
-        //money= 250.16; //jei nerastu failo - NERANDA FAILO
-        //money = readFromFile("money.txt");
 
         TextView moneyView = findViewById(R.id.tabletextmoney);
         String moneystr = df.format((money));
@@ -117,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         }
 
         dialog = new ProgressDialog(this);
-        dialog.setTitle("Fetching news articles...");
+        dialog.setTitle("Kraunamos naujienos...");
         dialog.show();
        // Date startDate = new Date();
         RequestManager manager = new RequestManager(this);
