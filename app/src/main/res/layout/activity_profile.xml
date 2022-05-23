@@ -56,14 +56,14 @@
 
     <TextView
         android:id="@+id/profile_car"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tesla S"
-        android:textSize="15sp">
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="170dp"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
     <TextView
@@ -80,14 +80,14 @@
 
     <TextView
         android:id="@+id/profile_car_nums"
-        android:layout_marginTop="220dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EVROOM 156"
-        android:textSize="15sp">
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="220dp"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
 
@@ -105,14 +105,14 @@
 
     <TextView
         android:id="@+id/profile_card"
-        android:layout_marginTop="270dp"
-        android:layout_marginLeft="170dp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mastercard 8459 *****"
-        android:textSize="15sp">
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="270dp"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
     </TextView>
 

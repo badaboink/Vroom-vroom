@@ -18,7 +18,8 @@ public class BatteryCheck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_charging);
 
-        int chargeFrom = 0;
+        Bundle bundle = getIntent().getExtras();
+        int chargeFrom = bundle.getInt("battery");
         ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(chargeFrom);
         Button text = (Button) findViewById(R.id.button);
@@ -27,7 +28,6 @@ public class BatteryCheck extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(BatteryCheck.this, PaySelect.class);
                 startActivity(intent);
-
             }
 
         });

@@ -33,8 +33,10 @@ public class PaySelect extends AppCompatActivity {
     String saved1,saved2, saved3 ="";
     EditText percentage;
     String subPrice="";
+    static int currBattery = 0;
     private String URL = "http://10.0.2.2/login/register.php";
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    private static boolean success = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class PaySelect extends AppCompatActivity {
                     subPrice = saved3.substring(1,5);
 
                 }
+                currBattery = MainActivity.Battery;
                 price = Double.parseDouble(subPrice);//(savedPrice2);
                 percentage=findViewById(R.id.percentChange);
                 Double percent =0.00;
@@ -85,6 +88,7 @@ public class PaySelect extends AppCompatActivity {
                 totalSum = percent*price;
                 String stringsum = df.format(totalSum); //cia nzn kaip reikes dar konvertuot
                 totalPrice.setText(stringsum + " €");
+
                 //totalPrice.setText(totalSum + " €");
                 //Toast.makeText(getApplicationContext(),(int)price, Toast.LENGTH_SHORT).show();
             }
@@ -130,8 +134,9 @@ public class PaySelect extends AppCompatActivity {
 
                 Intent ibattery = new Intent(PaySelect.this, Battery.class);
                 Bundle bundle = new Bundle();
-                int percentageDouble = Integer.parseInt(percentage.getText().toString());
-                bundle.putInt("percentage", percentageDouble);
+                int percentagereturn = Integer.parseInt(percentage.getText().toString());
+                bundle.putInt("percentage", percentagereturn);
+                bundle.putInt("currentBattery", currBattery);
                 ibattery.putExtras(bundle);
                 startActivity(ibattery);
 
