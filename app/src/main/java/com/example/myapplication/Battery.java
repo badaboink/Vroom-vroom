@@ -53,11 +53,11 @@ public class Battery extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         battery = bundle.getInt("percentage");
-
-
-
-
         chargeFrom = bundle.getInt("currentBattery");
+        Double Left = bundle.getDouble("money");
+
+
+
         ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(chargeFrom);
         // if button is pressed => charge
@@ -120,6 +120,7 @@ public class Battery extends AppCompatActivity {
                         MainActivity.isloggedin();
                         Bundle bundle = new Bundle();
                         bundle.putInt("battery", finalChargeFrom +finalBattery);
+                        bundle.putDouble("money", Left);
                         intent.putExtras(bundle);
 
                         // start your activity here

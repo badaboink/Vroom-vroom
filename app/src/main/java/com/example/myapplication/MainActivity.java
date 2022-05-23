@@ -84,15 +84,12 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         else money = 250.16;*/
 
         Intent intent = getIntent();
-        String moneyB = intent.getStringExtra("money");
-        if (moneyB!=null){
+        Bundle bundle = getIntent().getExtras();
+
+        if (finishedcharge()){
             //String myString = bundle.containsKey("money") ? bundle.getString("money") : "250.16";
              //String moneys = bundle.getString("money");
-
-            //if(moneys!=null)
-            money = Double.parseDouble(moneyB);
-            //format
-
+            money = bundle.getDouble("money");
 
         }
         else money = 256.16;
@@ -171,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         if(finishedcharge())
         {
-            Bundle bundle = getIntent().getExtras();
+
             Battery = bundle.getInt("battery");
             charge = false;
 

@@ -104,11 +104,14 @@ public class PaySelect extends AppCompatActivity {
 
                 //TODO:tikrint ar tiek reikia procentu ir ar yra tiek pinigu
 
-                Toast.makeText(getApplicationContext(), "Mokėjimas sėkmingas", Toast.LENGTH_SHORT).show();
+
 
                 //nuskaiciuot pinigus ir irasyt i faila
                 Double money = MainActivity.GetMoney();
                 Double Left = money-totalSum;
+
+                if(Left>0)
+                {
                 MainActivity.SetMoney(Left);
 
                 //su duombaze
@@ -127,23 +130,34 @@ public class PaySelect extends AppCompatActivity {
                /* Intent intent = new Intent(PaySelect.this, MainActivity.class);
                 startActivity(intent);*/
 
-                Intent i = new Intent();
-                i.setClassName("com.example.myapplication", "com.example.myapplication.MainActivity");
-                i.putExtra("money", Left.toString());
-                //startActivity(i);
-
                 Intent ibattery = new Intent(PaySelect.this, Battery.class);
                 Bundle bundle = new Bundle();
                 int percentagereturn = Integer.parseInt(percentage.getText().toString());
-                bundle.putInt("percentage", percentagereturn);
-                bundle.putInt("currentBattery", currBattery);
-                ibattery.putExtras(bundle);
-                startActivity(ibattery);
-
-
-
+                if(percentagereturn < 0 && currBattery+percentagereturn<0)
+                {
+                    Toast.makeText(getApplicationContext(),"Negalima iskrauti nepakrauto automobilio", Toast.LENGTH_SHORT).show();
+                }
+                else if(percentagereturn > 0 && currBattery+percentagereturn>100)
+                {
+                    Toast.makeText(getApplicationContext(),"Automobilis jau pakrautas arba pasirinktas kiekis per didelis", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Mokėjimas sėkmingas", Toast.LENGTH_SHORT).show();
+                    bundle.putInt("percentage", percentagereturn);
+                    bundle.putInt("currentBattery", currBattery);
+                    bundle.putDouble("money", Left);
+                    ibattery.putExtras(bundle);
+                    startActivity(ibattery);
+                }
                 //krovimo pradzia vaizdavimo
                 //veliau uzdet tikrinima ar yra pinigu tiek
+                }
+                if(Left<0)
+                {
+                    Toast.makeText(getApplicationContext(),"Nepakankamas pinigų likutis", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
         });
