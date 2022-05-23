@@ -20,6 +20,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".ChangeCar"
+            android:exported="false" />
+        <activity
             android:name=".ChargingStatus"
             android:exported="false" />
         <activity

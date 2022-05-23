@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ChargingStatus">
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="136dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="236dp"
+        android:text="tekstas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

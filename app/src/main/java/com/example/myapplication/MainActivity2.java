@@ -65,7 +65,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void getPriceDetailed() {
-        String url = "http://192.168.1.167/readElectricityPrices.php";
+        String url = "http://192.168.231.121/readElectricityPrices.php";
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity2.this);
 
@@ -91,7 +91,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void setPrice(String username, String sellToGrid, String buyFromGrid) {
 
-        String url = "http://192.168.1.167/writeElectricityPrices.php";
+        String url = "http://192.168.231.121/writeElectricityPrices.php";
         RequestQueue queue = Volley.newRequestQueue(MainActivity2.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);

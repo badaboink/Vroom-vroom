@@ -17,6 +17,9 @@ public class Settings extends AppCompatActivity {
 
         TextView text = (TextView) findViewById(R.id.addCard);
         TextView text2 = (TextView) findViewById(R.id.priceSettings);
+        TextView text3 = (TextView) findViewById(R.id.infosettings);
+        TextView text4 = (TextView) findViewById(R.id.addCar);
+        TextView text5 = (TextView) findViewById(R.id.changePassword);
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +33,27 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Settings.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+        text3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, ChargingStatus.class);
+                startActivity(intent);
+            }
+        });
+        text4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, ChangeCar.class);
+                startActivity(intent);
+            }
+        });
+        text5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, ChangePassword.class);
                 startActivity(intent);
             }
         });

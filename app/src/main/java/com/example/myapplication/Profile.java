@@ -35,11 +35,13 @@ public class Profile extends AppCompatActivity {
         //username.setText
         Button changeprice = (Button) findViewById(R.id.accessprice);
         Button logout = (Button) findViewById(R.id.btn_logout);
-        TextView username = findViewById(R.id.profile_email);
+        TextView username = findViewById(R.id.profile_name);
+        TextView email = findViewById(R.id.profile_email);
         TextView car = findViewById(R.id.profile_car);
         TextView carnr = findViewById(R.id.profile_car_nums);
         TextView card = findViewById(R.id.profile_card);
-        username.setText(LoginActivity.emailFromDb);
+        username.setText(LoginActivity.nameFromDb);
+        email.setText(LoginActivity.emailFromDb);
         car.setText(LoginActivity.autoFromDB);
         carnr.setText(LoginActivity.autoNrFromDb);
         card.setText("**** **** ***** "+ LoginActivity.cardFromDb.substring(12, 16));

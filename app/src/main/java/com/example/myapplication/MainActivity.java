@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -146,10 +147,12 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
+
         if(!isloggedin()){
             chargeButton.setVisibility(View.GONE);
             drawerEmail.setText("Prisijunkite");
             moneyView.setText("");
+
         }
 
         if(isloggedin())
@@ -159,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             drawerName.setText(LoginActivity.nameFromDb);
             Battery = Integer.parseInt(LoginActivity.batteryFromDb);
             chargeButton.setVisibility(View.VISIBLE);
+
         }
         chargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -400,9 +404,15 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                     return true;
                 }
             case R.id.nav_settings:
-                Intent intent = new Intent(MainActivity.this,Settings.class);
-                startActivity(intent);
-                return true;
+                if(login)
+                {
+                    Intent intent = new Intent(MainActivity.this,Settings.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else{
+                   Toast.makeText(MainActivity.this, "Prisijunkite!", Toast.LENGTH_SHORT).show();
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }

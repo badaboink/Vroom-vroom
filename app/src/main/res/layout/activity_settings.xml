@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
 
 
     <TextView
+        android:id="@+id/addCar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -41,6 +43,7 @@
     </TextView>
 
     <TextView
+        android:id="@+id/changePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -50,6 +53,7 @@
         android:textSize="15sp">
 
     </TextView>
+
     <TextView
         android:id="@+id/priceSettings"
         android:layout_width="wrap_content"
@@ -58,7 +62,20 @@
         android:layout_marginTop="270dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="Kainų nustatymai"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp">
+
+    </TextView>
+    <TextView
+        android:id="@+id/infosettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="320dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp">
 

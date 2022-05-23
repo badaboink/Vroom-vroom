@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/colorOnPrimary">
+    android:background="@drawable/bg_color">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,6 +22,30 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="120dp"
+        android:text="Vardas:"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="italic">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="120dp"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="bold">
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="170dp"
         android:text="El. paštas:"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
@@ -34,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="170dp"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
@@ -43,14 +67,14 @@
     </TextView>
 
     <TextView
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="20dp"
-        android:textStyle="italic"
-        android:textColor="?attr/colorOnSecondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
         android:text="Susietas automobilis:"
-        android:textSize="15sp">
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:textStyle="italic">
 
     </TextView>
 
@@ -59,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="220dp"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
@@ -67,7 +91,7 @@
 
     </TextView>
     <TextView
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="270dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
         android:textColor="?attr/colorOnSecondary"
@@ -83,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="270dp"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
@@ -92,7 +116,7 @@
     </TextView>
 
     <TextView
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="320dp"
         android:layout_marginLeft="20dp"
         android:textStyle="italic"
         android:textColor="?attr/colorOnSecondary"
@@ -108,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="320dp"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp"
@@ -121,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="370dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Mokėjimų istorija"
@@ -139,7 +163,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="122dp"
-        android:layout_marginBottom="187dp"
+        android:layout_marginBottom="152dp"
         android:text="Kainos keitimas" />
 
     <Button
