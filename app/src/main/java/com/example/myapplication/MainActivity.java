@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             Bundle bundle = getIntent().getExtras();
             Battery = bundle.getInt("battery");
             charge = false;
+
         }
       }
 
