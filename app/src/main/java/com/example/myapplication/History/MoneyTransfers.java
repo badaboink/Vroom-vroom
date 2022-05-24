@@ -14,11 +14,11 @@ import java.text.DecimalFormat;
 
 public class MoneyTransfers extends AppCompatActivity{
 
-   String dates[] = {"2022-05-09", "2022-05-01","2022-04-16","2022-04-12", "2022-03-15", "2022-03-14"};
+   String dates[] = {"2022-05-09", "2022-05-01","2022-04-16","2022-04-12", "2022-03-15", "2022-03-14", "2022-05-24"};
    String info[]={"Elektros pirkimas iš Ignitis", "Elektros pirkimas iš Ignitis",
            "Elektros pirkimas iš Elektrum","Elektros pirkimas iš Eso",
-           "Elektros pirkimas iš Elektrum","Elektros pirkimas iš Ignitis"};
-   Double ammount[] = {-20.5,-15.6,-50.69,-31.1, -12.5, -5.98};
+           "Elektros pirkimas iš Elektrum","Elektros pirkimas iš Ignitis", "Elektros pardavimas Ignitis"};
+   Double ammount[] = {-20.5,-15.6,-50.69,-31.1, -12.5, -5.98, 50.8};
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
 
@@ -32,11 +32,13 @@ public class MoneyTransfers extends AppCompatActivity{
         gained = findViewById(R.id.gainedMoney);
         history = findViewById(R.id.moneyHistory);
         Double spentMoney=0.00;
+        Double gainedMoney = 0.00;
         for(int i=0; i<ammount.length;i++){
-            spentMoney+=ammount[i];
+            if(ammount[i]<0) spentMoney+=ammount[i];
+                    else gainedMoney+=ammount[i];
         }
         spent.setText(df.format(spentMoney).toString() +" €");
-        gained.setText("0.00 €");
+        gained.setText(df.format(gainedMoney).toString() +" €");
 
         MoneyAdapter adapter = new MoneyAdapter(this,dates,info,ammount);
         history.setAdapter(adapter);

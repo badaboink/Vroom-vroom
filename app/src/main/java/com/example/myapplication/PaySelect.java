@@ -55,7 +55,7 @@ public class PaySelect extends AppCompatActivity {
 
        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override //kazkas cia negerai, nes jei paspaudi, sustoja programa
+            @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //String item = listAdapter.getItem(i);
                 int index =i;
@@ -79,18 +79,16 @@ public class PaySelect extends AppCompatActivity {
                 percentage=findViewById(R.id.percentChange);
                 Double percent =0.00;
                 try{
-                     percent = Double.parseDouble(percentage.getText().toString()); //is Egles gaut reikes
+                     percent = Double.parseDouble(percentage.getText().toString());
                 }
                 catch (NumberFormatException e){
                     percent=0.00;
 
                 }
                 totalSum = percent*price;
-                String stringsum = df.format(totalSum); //cia nzn kaip reikes dar konvertuot
+                String stringsum = df.format(totalSum);
                 totalPrice.setText(stringsum + " €");
 
-                //totalPrice.setText(totalSum + " €");
-                //Toast.makeText(getApplicationContext(),(int)price, Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -119,16 +117,7 @@ public class PaySelect extends AppCompatActivity {
                 String info = "Mokėjimas už elektrą EVVVR" +ThreadLocalRandom.current().nextInt(1000,5000);
                 //arba paimt imone tik ir ne saskaita
                 Double spent, gained;
-                //spent = getSpent()- spent;
-                //gained=getGained()+gained;
-                //idet i duombaze viska
 
-                //failas - netinka assets - jie readonly :(((
-                //writeToFile("money.txt",Left.toString());
-
-                //iseit i main
-               /* Intent intent = new Intent(PaySelect.this, MainActivity.class);
-                startActivity(intent);*/
 
                 Intent ibattery = new Intent(PaySelect.this, Battery.class);
                 Bundle bundle = new Bundle();
@@ -163,35 +152,5 @@ public class PaySelect extends AppCompatActivity {
         });
 
     }
-    public void writeToFile(String filename, String content ) {
-
-
-        File file = new File(PaySelect.this.getFilesDir(), filename);
-        if (!file.exists()) {
-            file.mkdir();
-        }
-        try {
-            File gpxfile = new File(file, "sample");
-            FileWriter writer = new FileWriter(gpxfile);
-            writer.append(content);
-            writer.flush();
-            writer.close();
-        } catch (Exception e) { }
-
-
-       /*File path = getApplicationContext().getFilesDir();
-       try{
-           FileOutputStream writer = new FileOutputStream(new File(path, filename));
-           writer.write(content.getBytes(StandardCharsets.UTF_8));
-            writer.close();
-       } catch (FileNotFoundException e) {
-           e.printStackTrace();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }*/
 
     }
-
-
-
-}
