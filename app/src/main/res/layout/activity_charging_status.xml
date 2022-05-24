@@ -1,26 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChargingStatus">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".PaySelect"
+    android:background="@drawable/bg_color">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="82dp" />
 
     <TextView
-        android:id="@+id/info"
-        android:layout_width="136dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="236dp"
-        android:text="tekstas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100sp"
+
+
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20sp"
+        android:text="Krovimo būsena"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="22sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+    <Button
+        android:id="@+id/check"
+        android:layout_width="123dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="130sp"
+        android:layout_marginBottom="110sp"
+        android:text="Tikrinti db? bbz"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="15sp">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="171dp"
+        android:layout_height="29dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="0.1sp"
+        android:text="Ar prijungta?"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/ans1"
+        android:layout_width="171dp"
+        android:layout_height="29dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30sp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="171dp"
+        android:layout_height="29dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="70sp"
+        android:text="Ar kraunama?"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:id="@+id/ans2"
+        android:layout_width="171dp"
+        android:layout_height="29dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100sp"
+        android:text="" />
+
+
+</RelativeLayout>

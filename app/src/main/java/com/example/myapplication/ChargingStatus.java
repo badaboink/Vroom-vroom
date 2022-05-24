@@ -31,8 +31,8 @@ public class ChargingStatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charging_status);
 
-        Button B4 = findViewById(R.id.button4);
-        B4.setOnClickListener(v -> readBalance());
+        //Button B4 = findViewById(R.id.button4);
+        //B4.setOnClickListener(v -> readBalance());
     }
     private void readMarketPrice(){
         String url = "http://192.168.231.121/readMarketPrice.php";
@@ -40,7 +40,7 @@ public class ChargingStatus extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);
             try {
-                TextView dis1 = findViewById(R.id.info);
+                //TextView dis1 = findViewById(R.id.info);
 
                 JSONObject jsonobject = new JSONObject(response);
 
@@ -53,11 +53,7 @@ public class ChargingStatus extends AppCompatActivity {
                 price3 = jsonobject.getString("price3");
 
 
-                dis1.setText(price1);
-                if(distributor1 == "")
-                {
-                    Toast.makeText(ChargingStatus.this, "F0", Toast.LENGTH_SHORT).show();
-                }
+                //dis1.setText(price1);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -84,8 +80,8 @@ public class ChargingStatus extends AppCompatActivity {
                 isConnected = jsonObject.getString("isConnected");
                 chargingStatus = jsonObject.getString("chargingStatus");
 
-                TextView dis1 = findViewById(R.id.info);
-                dis1.setText(chargingStatus);
+//                TextView dis1 = findViewById(R.id.info);
+//                dis1.setText(chargingStatus);
 
 
             } catch (JSONException e) {
@@ -112,8 +108,8 @@ public class ChargingStatus extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(response);
                 username = jsonObject.getString("username");
                 balance = jsonObject.getString("balance");
-                TextView dis1 = findViewById(R.id.info);
-                dis1.setText(balance);
+                //TextView dis1 = findViewById(R.id.info);
+                //dis1.setText(balance);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
