@@ -37,7 +37,7 @@ import java.util.Random;
 
 public class Battery extends AppCompatActivity {
     private String URL = "http://10.0.2.2/login/battery.php";
-    private String email = LoginActivity.emailFromDb, password, batteryfordb;
+    private String email, password, batteryfordb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class Battery extends AppCompatActivity {
         battery = bundle.getInt("percentage");
         chargeFrom = bundle.getInt("currentBattery");
         Double Left = bundle.getDouble("money");
-
+        password = bundle.getString("password");
 
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
@@ -69,6 +69,10 @@ public class Battery extends AppCompatActivity {
         batteryfordb = newbattery+"";
         email = LoginActivity.emailFromDb;
         password = LoginActivity.passwordFromDb;
+        TextView perc = findViewById(R.id.percentage);
+        perc.setText(String.format("Kraunama iki: %d %%", newbattery));
+        TextView percold = findViewById(R.id.percentageold);
+        perc.setText(String.format("Kraunama nuo: %d %%", chargeFrom));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

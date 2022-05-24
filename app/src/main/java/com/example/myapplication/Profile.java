@@ -37,13 +37,23 @@ public class Profile extends AppCompatActivity {
         Button logout = (Button) findViewById(R.id.btn_logout);
         TextView username = findViewById(R.id.profile_name);
         TextView email = findViewById(R.id.profile_email);
+
+
         TextView car = findViewById(R.id.profile_car);
         TextView carnr = findViewById(R.id.profile_car_nums);
         TextView card = findViewById(R.id.profile_card);
         username.setText(LoginActivity.nameFromDb);
         email.setText(LoginActivity.emailFromDb);
-        car.setText(LoginActivity.autoFromDB);
-        carnr.setText(LoginActivity.autoNrFromDb);
+
+        Bundle bundle = getIntent().getExtras();
+        String carget = bundle.getString("car");
+        String carnrget = bundle.getString("carnumbers");
+        //car.setText(LoginActivity.autoFromDB);
+        //carnr.setText(LoginActivity.autoNrFromDb);
+        car.setText(carget);
+        carnr.setText(carnrget);
+
+
         card.setText("**** **** ***** "+ LoginActivity.cardFromDb.substring(12, 16));
 
         changeprice.setVisibility(View.GONE);
