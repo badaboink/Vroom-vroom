@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_detail_content"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="?attr/colorOnSecondary"
                 android:layout_marginTop="8dp">
 
@@ -91,7 +91,7 @@
                 android:id="@+id/txt_url"
                 android:autoLink="web"
                 android:textSize="20sp"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="@color/yellow"
                 android:layout_marginTop="8dp">
 
             </TextView>

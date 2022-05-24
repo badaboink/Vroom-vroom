@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 
+import static android.content.ContentValues.TAG;
 import static com.example.myapplication.Prices.SaveLoadData.savedHour;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice1;
 import static com.example.myapplication.Prices.SaveLoadData.savedPrice2;
@@ -34,8 +35,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.myapplication.News.CustomAdapter;
 import com.example.myapplication.News.DetailActivity;
 import com.example.myapplication.News.News_Models.NewsApiResponse;
@@ -53,7 +61,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements  SelectListener, NavigationView.OnNavigationItemSelectedListener{ //mainactivitynews
+public class MainActivity extends AppCompatActivity implements  SelectListener, NavigationView.OnNavigationItemSelectedListener, MyAdapter.OnNoteListener { //mainactivitynews
 
     RecyclerView recyclerView;
     CustomAdapter adapter;
@@ -100,14 +108,24 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
         }
 
-        dialog = new ProgressDialog(this);
+        /*dialog = new ProgressDialog(this);
         dialog.setTitle("Kraunamos naujienos...");
         dialog.show();
        // Date startDate = new Date();
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener, "business");
+        manager.getNewsHeadlines(listener, "business");*/
+//---------------
+        int[] images = {R.drawable.hecbeck, R.drawable.lrytas};
 
-
+        String[] sources = {"Elektronika.lt","Lrytas.lt"};
+        String[] titles = {"Į Europą netrukus atkeliaus Kinijos milžinės pagamintas elektrinis hečbekas",
+                "Tyrimas: kurie automobilių gamintojai pasiruošę pereiti prie ekologijos: kitiems reikės gerokai pasistengti"};
+        recyclerView = findViewById(R.id.recycler_main);
+        String[] urls ={};
+        MyAdapter myadapter = new MyAdapter(this, sources, titles, images, urls,this);
+        recyclerView.setAdapter(myadapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//---------------
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -441,4 +459,18 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         return Double.parseDouble(moneyfile);
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        if(position==0)
+        {
+            Intent intent = new Intent(MainActivity.this, FirstNew.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(MainActivity.this, SecondNew.class);
+            startActivity(intent);
+
+        }
+    }
 }

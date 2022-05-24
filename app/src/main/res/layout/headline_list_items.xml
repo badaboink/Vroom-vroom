@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_title"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSecondary"
                 android:maxLines="3">
@@ -47,7 +47,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/img_headline"
-            android:src="@drawable/tesla"
             android:scaleType="centerCrop">
 
 
@@ -57,3 +56,4 @@
 
 </androidx.cardview.widget.CardView>
 
+    <!--android:src="@drawable/tesla"-->

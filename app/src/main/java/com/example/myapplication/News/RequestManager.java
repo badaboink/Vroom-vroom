@@ -7,7 +7,9 @@ import com.example.myapplication.News.News_Models.NewsApiResponse;
 import com.example.myapplication.R;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import okhttp3.internal.connection.Transmitter;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,8 +22,15 @@ import retrofit2.http.Query;
 public class RequestManager {
     Context context;
 
+    OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(2, TimeUnit.MINUTES)
+            .readTimeout(2,TimeUnit.MINUTES)
+            .writeTimeout(2,TimeUnit.MINUTES)
+            .build();
+
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://newsapi.org/v2/")
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
