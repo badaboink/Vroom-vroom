@@ -34,23 +34,25 @@
 
     <TextView
         android:id="@+id/priceToBuy"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="211dp"
-        android:layout_marginTop="288dp"
-        android:text="" />
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="276dp"
+        android:text=""
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/priceToSell"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
+        android:layout_width="141dp"
+        android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="288dp"
-        android:text="" />
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="276dp"
+        android:text=""
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -60,7 +62,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="210dp"
         android:layout_marginTop="243dp"
-        android:text="Pirkimo kaina" />
+        android:text="Pirkimo kaina"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -158,12 +162,15 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
+        android:layout_width="141dp"
+        android:layout_height="32dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="54dp"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="243dp"
-        android:text="Pardavimo kaina:" />
+        android:text="Pardavimo kaina:"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
 
 </RelativeLayout>

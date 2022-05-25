@@ -41,13 +41,6 @@
         android:inputType="number" />
 
     <!--Button for adding your course to Firebase-->
-    <Button
-        android:id="@+id/idBtnSetPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Set price"
-        android:textAllCaps="false" />
 
     <androidx.cardview.widget.CardView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -87,4 +80,32 @@
                 android:textColor="@color/black" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:id="@+id/charge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Įkrauti ir iškrauti" />
+
+        <RadioButton
+            android:id="@+id/discharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tik įkrauti" />
+
+
+    </RadioGroup>
+    <Button
+        android:id="@+id/idBtnSetPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="GERAI"
+        android:textAllCaps="false" />
+
 </LinearLayout>
