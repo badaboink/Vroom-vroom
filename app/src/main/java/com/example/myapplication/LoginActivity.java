@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword, etMoney;
     private static String email, password, name, money;
     public static final String serverurl="localhost/";
-    public static final String db_nameurl="register_from_android";
+    public static final String db_nameurl="login";
     public static final String userNameurl="root";
     public static final String passwordurl="";
 

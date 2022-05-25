@@ -28,18 +28,18 @@
     </TextView>
 
 
-    <Button
-        android:id="@+id/check"
-        android:layout_width="123dp"
-        android:layout_height="60dp"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="130sp"
-        android:layout_marginBottom="110sp"
-        android:text="Tikrinti db? bbz"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="15sp">
+<!--    <Button-->
+<!--        android:id="@+id/check"-->
+<!--        android:layout_width="123dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_marginLeft="130sp"-->
+<!--        android:layout_marginBottom="110sp"-->
+<!--        android:text="Tikrinti db? bbz"-->
+<!--        android:textColor="?attr/colorOnPrimary"-->
+<!--        android:textSize="15sp">-->
 
-    </Button>
+<!--    </Button>-->
 
     <TextView
         android:id="@+id/textView3"

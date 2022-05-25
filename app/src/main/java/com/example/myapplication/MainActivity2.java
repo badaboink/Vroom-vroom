@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         dateTV = findViewById(R.id.idTVDate);
         priceTV = findViewById(R.id.idTVPrice);
-        getPriceBtn = findViewById(R.id.idBtnGetPrice);
+
         setPriceBtn = findViewById(R.id.idBtnSetPrice);
         priceCV = findViewById(R.id.idCVPriceItem);
 
@@ -46,7 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
         sellToGridIDEdt = findViewById(R.id.idEdtSellToGrid);
         buyFromGridIDEdt = findViewById(R.id.idEdtBuyFromGrid);
 
-        getPriceBtn.setOnClickListener(v -> getPriceDetailed());
+
         setPriceBtn.setOnClickListener(v -> {
             username = usernameIDEdt.getText().toString();
             sellToGrid = sellToGridIDEdt.getText().toString();
@@ -64,34 +64,11 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
-    private void getPriceDetailed() {
-        String url = "http://192.168.231.121/readElectricityPrices.php";
 
-        RequestQueue queue = Volley.newRequestQueue(MainActivity2.this);
-
-        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
-            try {
-                JSONObject jsonObject = new JSONObject(response);
-                dateTV.setText(jsonObject.getString("time"));
-                priceTV.setText(jsonObject.getString("price"));
-                priceCV.setVisibility(View.VISIBLE);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }, error -> {
-            Toast.makeText(MainActivity2.this, "Fail to get price" + error, Toast.LENGTH_SHORT).show();
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded; charset=UTF-8";
-            }
-        };
-        queue.add(request);
-    }
 
     private void setPrice(String username, String sellToGrid, String buyFromGrid) {
 
-        String url = "http://192.168.231.121/writeElectricityPrices.php";
+        String url = "http://192.168.245.121/writeElectricityPrices.php";
         RequestQueue queue = Volley.newRequestQueue(MainActivity2.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);

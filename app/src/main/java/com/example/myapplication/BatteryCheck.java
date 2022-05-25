@@ -34,8 +34,7 @@ public class BatteryCheck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charging_status);
 
-        Button button = findViewById(R.id.check);
-        button.setOnClickListener(v -> readChargingStatus());
+        readChargingStatus();
 
 //        mHandler = new Handler();
 //        startRepeatingTask();
@@ -60,14 +59,23 @@ public class BatteryCheck extends AppCompatActivity {
     }
 
     private void readChargingStatus(){
-        String url = "http://192.168.231.121/readChargingStatus.php";
+        String url = "http://192.168.245.121/readChargingStatus.php";
         RequestQueue queue = Volley.newRequestQueue(BatteryCheck.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 isConnected = jsonObject.getString("isConnected");
+                if(isConnected.equals("yes"))
+                    isConnected = "Taip";
+                else if(isConnected.equals("no"))
+                    isConnected = "Ne";
+
                 chargingStatus = jsonObject.getString("chargingStatus");
+                if(chargingStatus.equals("charging"))
+                    chargingStatus = "Kraunasi";
+                else if(isConnected.equals("discharging"))
+                    isConnected = "Nesikrauna";
 
                 TextView a1 = findViewById(R.id.ans1);
                 a1.setText(isConnected);

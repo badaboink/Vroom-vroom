@@ -36,7 +36,7 @@ public class ChargingStatus extends AppCompatActivity {
     }
 
     private void readChargingStatus(){
-        String url = "http://192.168.231.121/readChargingStatus.php";
+        String url = "http://192.168.245.121/readChargingStatus.php";
         RequestQueue queue = Volley.newRequestQueue(ChargingStatus.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);
@@ -65,7 +65,7 @@ public class ChargingStatus extends AppCompatActivity {
         queue.add(request);
     }
     private void readBalance(){
-        String url = "http://192.168.231.121/readBalance.php";
+        String url = "http://192.168.245.121/readBalance.php";
         RequestQueue queue = Volley.newRequestQueue(ChargingStatus.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             Log.e("TAG", "RESPONSE IS " + response);

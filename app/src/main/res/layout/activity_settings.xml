@@ -3,6 +3,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color">
+
+    <TextView
+        android:id="@+id/priceSettings3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Kainos keitimas"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/priceSettings2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Kainos keitimas"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/priceToBuy"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="211dp"
+        android:layout_marginTop="288dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/priceToSell"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="288dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="243dp"
+        android:text="Pirkimo kaina" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +74,21 @@
 
     </TextView>
 
+
+    <TextView
+        android:id="@+id/priceSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Kainos keitimas"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp">
+
+    </TextView>
+
     <TextView
         android:id="@+id/addCard"
         android:layout_width="wrap_content"
@@ -23,7 +97,7 @@
         android:layout_marginTop="120dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="Pridėti mokėjimo kortelę"
+        android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp">
 
@@ -36,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="170dp"
-        android:text="Keisti automobilį"
+        android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp">
 
@@ -48,25 +122,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="220dp"
-        android:text="Keisti slaptažodį"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="15sp">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/priceSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="270dp"
-        android:clickable="true"
-        android:focusable="true"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:textSize="15sp">
 
     </TextView>
+
     <TextView
         android:id="@+id/infosettings"
         android:layout_width="wrap_content"
@@ -80,5 +141,29 @@
         android:textSize="15sp">
 
     </TextView>
+
+    <TextView
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="160dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Mokėjimų istorija"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="243dp"
+        android:text="Pardavimo kaina:" />
 
 </RelativeLayout>

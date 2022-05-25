@@ -19,6 +19,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     static String car = "";
     static String carnr = "";
     private static final DecimalFormat df = new DecimalFormat("0.00");
-
+    Handler mHandler;
+    private String username, balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         setContentView(R.layout.activity_main);
 
 
-        TextView moneyView = findViewById(R.id.tabletextmoney);
+        //TextView moneyView = findViewById(R.id.tabletextmoney);
         String moneystr = df.format((money));
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
@@ -148,21 +150,22 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
 
         //prices
         //showPrices();
-        readMarketPrice();
+
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
 
         if(!isloggedin()){
             chargeButton.setVisibility(View.GONE);
-            drawerEmail.setText("Prisijunkite");
-            moneyView.setText("");
+
+            //drawerEmail.setText(username);
+            //moneyView.setText(balance);
 
         }
 
         if(isloggedin())
         {
-            moneyView.setText(moneystr +" €");
+            //moneyView.setText(moneystr +" €");
             drawerEmail.setText(LoginActivity.emailFromDb);
             drawerName.setText(LoginActivity.nameFromDb);
             Battery = Integer.parseInt(LoginActivity.batteryFromDb);
@@ -184,9 +187,37 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             charge = false;
 
         }
+        mHandler = new Handler();
+        startRepeatingTask();
       }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
 
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                readMarketPrice(); //this function can change value of mInterval.
+                readBalance();
+            } finally {
+                // 100% guarantee that this always happens, even if
+                // your update method throws an exception
+                mHandler.postDelayed(mStatusChecker, 30*60);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
+    }
     public static void SetMoney(Double m)
     {
         money=m;
@@ -197,43 +228,76 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
     }
 
 
+    private void readBalance(){
+        String url = "http://192.168.245.121/readBalance.php";
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+            Log.e("TAG", "RESPONSE IS " + response);
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                username = jsonObject.getString("username");
+                balance = jsonObject.getString("balance");
+                TextView moneyView = findViewById(R.id.tabletextmoney);
+                moneyView.setText(balance + "€");
+                drawer = findViewById(R.id.drawer_layout);
+                NavigationView navigationView = findViewById(R.id.nav_view);
+                View headerView = navigationView.getHeaderView(0);
+                TextView drawerEmail = headerView.findViewById(R.id.drawer_email);
+                drawerEmail.setText(username);
+                //TextView dis1 = findViewById(R.id.info);
+                //dis1.setText(balance);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }, error -> {
+            Toast.makeText(MainActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+        };
+        queue.add(request);
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_profile:
-                if(!login)
-                {
-                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                else
-                {
-                    Intent intent = new Intent(MainActivity.this,Profile.class);
-                    Bundle bundle = new Bundle();
-                    if(car == "" || carnr == "")
-                    {
-                        car = LoginActivity.autoFromDB;
-                        carnr = LoginActivity.autoNrFromDb;
-                    }
-                    bundle.putString("car", car);
-                    bundle.putString("carnumbers", carnr);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    return true;
-                }
+//                if(!login)
+//                {
+//                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                else
+//                {
+//                    Intent intent = new Intent(MainActivity.this,Profile.class);
+//                    Bundle bundle = new Bundle();
+//                    if(car == "" || carnr == "")
+//                    {
+//                        car = LoginActivity.autoFromDB;
+//                        carnr = LoginActivity.autoNrFromDb;
+//                    }
+//                    bundle.putString("car", car);
+//                    bundle.putString("carnumbers", carnr);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                    return true;
+//                }
             case R.id.nav_battery:
-                if(isloggedin())
-                {
+                //if(isloggedin())
+                //{
                     Intent intent = new Intent(MainActivity.this,BatteryCheck.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("battery", Battery);
                     intent.putExtras(bundle);
                     startActivity(intent);
                     return true;
-                }
-                else
-                    Toast.makeText(MainActivity.this, "Prisijunkite", Toast.LENGTH_SHORT).show();
+                //}
+                //else
+                    //Toast.makeText(MainActivity.this, "Prisijunkite", Toast.LENGTH_SHORT).show();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -270,11 +334,19 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         recyclerView.setAdapter(adapter);
     }
     private void readMarketPrice(){
-        String url = "http://192.168.231.121/readMarketPrice.php";
+        String url = "http://192.168.245.121/readMarketPrice.php";
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+
             Log.e("TAG", "RESPONSE IS " + response);
             try {
+                TextView p1 = findViewById(R.id.tabletext1col1);
+                TextView p2 = findViewById(R.id.tabletext2col1);
+                TextView p3 = findViewById(R.id.tabletext3col1);
+                TextView d1 = findViewById(R.id.tabletext1col2);
+                TextView d2 = findViewById(R.id.tabletext2col2);
+                TextView d3 = findViewById(R.id.tabletext3col2);
                 //TextView dis1 = findViewById(R.id.info);
 
                 JSONObject jsonobject = new JSONObject(response);
@@ -287,16 +359,10 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
                 price2 = jsonobject.getString("price2");
                 price3 = jsonobject.getString("price3");
 
-                TextView p1 = findViewById(R.id.tabletext1col1);
-                TextView p2 = findViewById(R.id.tabletext2col1);
-                TextView p3 = findViewById(R.id.tabletext3col1);
-                TextView d1 = findViewById(R.id.tabletext1col2);
-                TextView d2 = findViewById(R.id.tabletext2col2);
-                TextView d3 = findViewById(R.id.tabletext3col2);
 
-                p1.setText(price1);
-                p2.setText(price2);
-                p3.setText(price3);
+                p1.setText(price1+" €/kWh");
+                p2.setText(price2+" €/kWh");
+                p3.setText(price3+" €/kWh");
                 d1.setText(distributor1);
                 d2.setText(distributor2);
                 d3.setText(distributor3);
@@ -304,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             } catch (JSONException e) {
                 e.printStackTrace();
                 TextView p1 = findViewById(R.id.tabletext1col1);
-                p1.setText("sad");
+
             }
 
         }, error -> {
@@ -316,6 +382,7 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
             }
         };
         queue.add(request);
+
     }
     private void showPrices(){
 
@@ -452,37 +519,37 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         switch(item.getItemId())
         {
             case R.id.nav_profile:
-                if(!login)
-                {
-                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                else
-                {
-                    Intent intent = new Intent(MainActivity.this,Profile.class);
-                    Bundle bundle = new Bundle();
-                    if(car == "" || carnr == "")
-                    {
-                        car = LoginActivity.autoFromDB;
-                        carnr = LoginActivity.autoNrFromDb;
-                    }
-                    bundle.putString("car", car);
-                    bundle.putString("carnumbers", carnr);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    return true;
-                }
+//                if(!login)
+//                {
+//                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                else
+//                {
+//                    Intent intent = new Intent(MainActivity.this,Profile.class);
+//                    Bundle bundle = new Bundle();
+//                    if(car == "" || carnr == "")
+//                    {
+//                        car = LoginActivity.autoFromDB;
+//                        carnr = LoginActivity.autoNrFromDb;
+//                    }
+//                    bundle.putString("car", car);
+//                    bundle.putString("carnumbers", carnr);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                    return true;
+//                }
             case R.id.nav_settings:
-                if(login)
-                {
+//                if(login)
+//                {
                     Intent intent = new Intent(MainActivity.this,Settings.class);
                     startActivity(intent);
                     return true;
-                }
-                else{
-                   Toast.makeText(MainActivity.this, "Prisijunkite!", Toast.LENGTH_SHORT).show();
-                }
+//                }
+//                else{
+//                   Toast.makeText(MainActivity.this, "Prisijunkite!", Toast.LENGTH_SHORT).show();
+//                }
             default:
                 return super.onOptionsItemSelected(item);
         }
