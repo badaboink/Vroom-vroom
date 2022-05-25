@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class ChargingStatus extends AppCompatActivity {
 
-    private String distributor1, price1, distributor2, price2, distributor3, price3;
+
     private String isConnected, chargingStatus;
     private String username, balance;
 
@@ -34,42 +34,7 @@ public class ChargingStatus extends AppCompatActivity {
         //Button B4 = findViewById(R.id.button4);
         //B4.setOnClickListener(v -> readBalance());
     }
-    private void readMarketPrice(){
-        String url = "http://192.168.231.121/readMarketPrice.php";
-        RequestQueue queue = Volley.newRequestQueue(ChargingStatus.this);
-        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
-            Log.e("TAG", "RESPONSE IS " + response);
-            try {
-                //TextView dis1 = findViewById(R.id.info);
 
-                JSONObject jsonobject = new JSONObject(response);
-
-
-                distributor1 = jsonobject.getString("distributor1");
-                distributor2 = jsonobject.getString("distributor2");
-                distributor3 = jsonobject.getString("distributor3");
-                price1 = jsonobject.getString("price1");
-                price2 = jsonobject.getString("price2");
-                price3 = jsonobject.getString("price3");
-
-
-                //dis1.setText(price1);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-
-            }
-
-        }, error -> {
-            Toast.makeText(ChargingStatus.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded; charset=UTF-8";
-            }
-        };
-        queue.add(request);
-    }
     private void readChargingStatus(){
         String url = "http://192.168.231.121/readChargingStatus.php";
         RequestQueue queue = Volley.newRequestQueue(ChargingStatus.this);

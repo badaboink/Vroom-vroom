@@ -54,6 +54,8 @@ import com.example.myapplication.News.SelectListener;
 import com.example.myapplication.Prices.SaveLoadData;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
@@ -63,6 +65,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements  SelectListener, NavigationView.OnNavigationItemSelectedListener, MyAdapter.OnNoteListener { //mainactivitynews
 
+    private String distributor1, price1, distributor2, price2, distributor3, price3;
     RecyclerView recyclerView;
     CustomAdapter adapter;
     ProgressDialog dialog;
@@ -144,7 +147,8 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         toggle.syncState();
 
         //prices
-        showPrices();
+        //showPrices();
+        readMarketPrice();
 
         ///button
         chargeButton = (Button)findViewById(R.id.butt_charge);
@@ -264,6 +268,54 @@ public class MainActivity extends AppCompatActivity implements  SelectListener, 
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         adapter = new CustomAdapter(this, list, this);
         recyclerView.setAdapter(adapter);
+    }
+    private void readMarketPrice(){
+        String url = "http://192.168.231.121/readMarketPrice.php";
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+            Log.e("TAG", "RESPONSE IS " + response);
+            try {
+                //TextView dis1 = findViewById(R.id.info);
+
+                JSONObject jsonobject = new JSONObject(response);
+
+
+                distributor1 = jsonobject.getString("distributor1");
+                distributor2 = jsonobject.getString("distributor2");
+                distributor3 = jsonobject.getString("distributor3");
+                price1 = jsonobject.getString("price1");
+                price2 = jsonobject.getString("price2");
+                price3 = jsonobject.getString("price3");
+
+                TextView p1 = findViewById(R.id.tabletext1col1);
+                TextView p2 = findViewById(R.id.tabletext2col1);
+                TextView p3 = findViewById(R.id.tabletext3col1);
+                TextView d1 = findViewById(R.id.tabletext1col2);
+                TextView d2 = findViewById(R.id.tabletext2col2);
+                TextView d3 = findViewById(R.id.tabletext3col2);
+
+                p1.setText(price1);
+                p2.setText(price2);
+                p3.setText(price3);
+                d1.setText(distributor1);
+                d2.setText(distributor2);
+                d3.setText(distributor3);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                TextView p1 = findViewById(R.id.tabletext1col1);
+                p1.setText("sad");
+            }
+
+        }, error -> {
+            Toast.makeText(MainActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+        };
+        queue.add(request);
     }
     private void showPrices(){
 
