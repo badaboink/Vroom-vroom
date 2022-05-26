@@ -27,7 +27,7 @@
         android:layout_marginEnd="10dp"
         android:hint="Pardavimo kaina"
         android:importantForAutofill="no"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/idEdtBuyFromGrid"
@@ -38,7 +38,7 @@
         android:layout_marginEnd="10dp"
         android:hint="Pirkimo kaina"
         android:importantForAutofill="no"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <!--Button for adding your course to Firebase-->
 
@@ -107,5 +107,6 @@
         android:layout_margin="10dp"
         android:text="GERAI"
         android:textAllCaps="false" />
+
 
 </LinearLayout>

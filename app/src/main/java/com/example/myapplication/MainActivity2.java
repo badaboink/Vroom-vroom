@@ -70,14 +70,16 @@ public class MainActivity2 extends AppCompatActivity {
                 }
                 else if(radioButton2.isChecked()){
                     charging = "no";
+                    if ((TextUtils.isEmpty(sellToGrid)) || (!sellToGrid.matches("[0-9]+.[0-9][0-9]"))){
+                        sellToGridIDEdt.setError("Please enter correct sell price");
+                    }
+                    if ((TextUtils.isEmpty(buyFromGrid)) || (!buyFromGrid.matches("[0-9]+.[0-9][0-9]"))){
+                        buyFromGridIDEdt.setError("Please enter correct buy price");
+                    }
 
                 }
                 if(TextUtils.isEmpty(username)){
                     usernameIDEdt.setError("Please enter username");
-                } else if (TextUtils.isEmpty(username)){
-                    sellToGridIDEdt.setError("Please enter sell price");
-                } else if (TextUtils.isEmpty(username)){
-                    buyFromGridIDEdt.setError("Please enter buy price");
                 }
                 else {
                     setPrice(username, sellToGrid, buyFromGrid, charging);
